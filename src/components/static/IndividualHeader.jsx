@@ -1,7 +1,7 @@
 import React from "react";
 
 const IndividualHeader = () => {
-  return <div>IndividualHeader</div>;
+  return <div>Header</div>;
 };
 
 export default IndividualHeader;

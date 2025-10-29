@@ -9,6 +9,7 @@ const Notification = () => {
         <TextWrapper>
           <div className="Text">
             <h4>Notifications</h4>
+            <h5>stay updated with your latest activities</h5>
           </div>
           <div className="SideNote">0 New</div>
         </TextWrapper>
@@ -93,16 +94,22 @@ const TextWrapper = styled.div`
 
   .Text {
     width: 20%;
-    height: 70px;
-    background: purple;
-    margin-left: 0;
+    height: 90px;
+    /* background: purple; */
+    margin: 0;
   }
 
   h4 {
     font-size: 20px;
     font-weight: 400;
-    color: #fff;
+    color: #000;
     margin-top: 0;
-    /* margin-left: 0; */
+  }
+
+  h5 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #7d7f84;
+    margin: 0px;
   }
 `;

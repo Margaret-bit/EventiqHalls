@@ -88,7 +88,7 @@ export const Element = createBrowserRouter([
     element: <HallOwnerLogin />,
   },
   {
-    path: "/hall-owner/signup",
+    path: "/signup-hallowner",
     element: <HallOwnerSignUp />,
   },
 ]);

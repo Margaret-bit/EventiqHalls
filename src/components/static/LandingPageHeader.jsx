@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import SignupDropdown from "./signupDropdown/SignupDropdown";
 
 const LandingpageHeader = () => {
   return (
@@ -13,7 +14,7 @@ const LandingpageHeader = () => {
         </NavLinks>
 
         <Nav_Buttons>
-  
+          <SignupDropdown />
           <Login_Button>Log In</Login_Button>
         </Nav_Buttons>
       </Nav_Content>
@@ -53,6 +54,7 @@ const Nav_Buttons = styled.div`
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  justify-content: center;
 `;
 const Navlink = styled.a`
   color: #ffffff;

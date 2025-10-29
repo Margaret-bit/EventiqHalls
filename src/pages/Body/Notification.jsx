@@ -124,12 +124,31 @@ const EmptyTitle = styled.h2`
   margin: 0;
   text-align: center;
 
-  @media (max-width: 768px) {
-    font-size: 1.125rem;
+  .SideNote {
+    width: 60px;
+    height: 26px;
+    background: purple;
+    border-radius: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
   }
 
-  @media (max-width: 480px) {
-    font-size: 1rem;
+  .Text {
+    width: 20%;
+    height: 70px;
+    background: purple;
+    margin-left: 0;
+  }
+
+  h4 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    margin-top: 0;
   }
 `;
 

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-scroll";
 
 const LandingpageFooter = () => {
   return (
@@ -27,13 +28,19 @@ const LandingpageFooter = () => {
             <h3>Quick Links</h3>
             <Footer_list>
               <li>
-                <Footer_link href="#">Home</Footer_link>
+                <Footer_link to="home" smooth={true} duration={600}>
+                  Home
+                </Footer_link>
               </li>
               <li>
-                <Footer_link href="#about">About</Footer_link>
+                <Footer_link to="about" smooth={true} duration={600}>
+                  About
+                </Footer_link>
               </li>
               <li>
-                <Footer_link href="#faq">Faq</Footer_link>
+                <Footer_link to="faq" smooth={true} duration={600}>
+                  Faq
+                </Footer_link>
               </li>
             </Footer_list>
           </Footer_section>
@@ -164,12 +171,13 @@ const Footer_email = styled.a`
   margin-bottom: 1.5rem;
   transition: color 0.2s ease;
 `;
-const Footer_link = styled.a`
+const Footer_link = styled(Link)`
   color: #ffffff;
   text-decoration: none;
   transition: color 0.2s ease;
   &:hover {
     color: #b6a1c1;
+    cursor: pointer;
   }
 `;
 const Footer_list = styled.ul`

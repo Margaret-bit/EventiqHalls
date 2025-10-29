@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import SignupDropdown from "./signupDropdown/SignupDropdown";
+import { Link } from "react-scroll";
 
 const LandingpageHeader = () => {
   return (
@@ -8,9 +9,15 @@ const LandingpageHeader = () => {
         <Logo>Eventiq</Logo>
 
         <NavLinks>
-          <Navlink href="#home">Home</Navlink>
-          <Navlink href="#about">About</Navlink>
-          <Navlink href="#faq">FAQ</Navlink>
+          <Navlink to="home" smooth={true} duration={600}>
+            Home
+          </Navlink>
+          <Navlink to="about" smooth={true} duration={600}>
+            About
+          </Navlink>
+          <Navlink to="faq" smooth={true} duration={600}>
+            FAQ
+          </Navlink>
         </NavLinks>
 
         <Nav_Buttons>
@@ -56,13 +63,14 @@ const Nav_Buttons = styled.div`
   gap: 0.75rem;
   justify-content: center;
 `;
-const Navlink = styled.a`
+const Navlink = styled(Link)`
   color: #ffffff;
   text-decoration: none;
   transition: color 0.3s;
 
   &:hover {
     color: #603379;
+    cursor: pointer;
   }
 `;
 const NavLinks = styled.div`

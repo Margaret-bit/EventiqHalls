@@ -51,7 +51,7 @@ export const Element = createBrowserRouter([
     ],
   },
   {
-    path: "individual-dashboard",
+    path: "/individual-dashboard",
     element: <IndividualLayout />,
     children: [
       {

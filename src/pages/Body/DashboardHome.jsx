@@ -28,7 +28,7 @@ const DashboardHome = () => {
       value: "0",
       icon: <BsBuilding />,
       iconBg: "#e9d5ff",
-      iconColor: "#9333ea",
+      iconColor: "purple",
     },
     {
       title: "Active Bookings",

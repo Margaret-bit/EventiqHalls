@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  z-index: 1000;
 }
 
 .modal-container {
@@ -45,7 +46,7 @@
 }
 
 .brand-name {
-  font-family: Georgia, 'Times New Roman', serif;
+  font-family: Georgia, "Times New Roman", serif;
   font-style: italic;
   color: #7c3aed;
 }

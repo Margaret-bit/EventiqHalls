@@ -9,8 +9,8 @@ const LandingpageHeader = () => {
 
         <NavLinks>
           <Navlink href="#home">Home</Navlink>
-          <Navlink href="#home">About</Navlink>
-          <Navlink href="#home">FAQ</Navlink>
+          <Navlink href="#about">About</Navlink>
+          <Navlink href="#faq">FAQ</Navlink>
         </NavLinks>
 
         <Nav_Buttons>

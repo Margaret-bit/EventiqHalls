@@ -30,10 +30,10 @@ const LandingpageFooter = () => {
                 <Footer_link href="#">Home</Footer_link>
               </li>
               <li>
-                <Footer_link href="#">About</Footer_link>
+                <Footer_link href="#about">About</Footer_link>
               </li>
               <li>
-                <Footer_link href="#">Faq</Footer_link>
+                <Footer_link href="#faq">Faq</Footer_link>
               </li>
             </Footer_list>
           </Footer_section>

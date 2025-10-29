@@ -1,22 +1,49 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import SignupModal from "../../components/static/signupModal/signupModal";
 
 const Hero = () => {
-  return (
-    <Container>
-      <Video autoPlay loop muted playsInline>
-        <source src="src/assets/halls.mp4" type="video/mp4" />
-      </Video>
-      <Overlay></Overlay>
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-      <Hero_content>
-        <h1>Find, Book, and Manage Event Halls with Ease</h1>
-        <p>
-          Eventiq connects hall owners and event organisers in one seamless
-          experience.
-        </p>
-        <Button>Get Started</Button>
-      </Hero_content>
-    </Container>
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isModalOpen]);
+
+  return (
+    <>
+      <Container id="home">
+        <Video autoPlay loop muted playsInline>
+          <source src="src/assets/halls.mp4" type="video/mp4" />
+        </Video>
+        <Overlay></Overlay>
+
+        <Hero_content>
+          <h1>Find, Book, and Manage Event Halls with Ease</h1>
+          <p>
+            Eventiq connects hall owners and event organisers in one seamless
+            experience.
+          </p>
+          <Button onClick={openModal}>Get Started</Button>
+        </Hero_content>
+      </Container>
+      {isModalOpen && <SignupModal onClose={closeModal} />}
+    </>
   );
 };
 

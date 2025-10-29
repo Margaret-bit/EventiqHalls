@@ -37,7 +37,7 @@ const Faq = () => {
   };
 
   return (
-    <Container>
+    <Container id="faq">
       <Content>
         <Faq_header>
           <h1>Frequently Asked Questions</h1>

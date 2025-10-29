@@ -4,7 +4,7 @@ import img from "../../assets/img.jpg";
 
 const Grow_booking = () => {
   return (
-    <Section>
+    <Section id="about">
       <Container>
         <Image>
           <img src={img} alt="Event hall" />

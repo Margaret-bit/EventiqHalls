@@ -91,4 +91,8 @@ export const Element = createBrowserRouter([
     path: "/signup-hallowner",
     element: <HallOwnerSignUp />,
   },
+   {
+    path: "/signup-inidividual",
+    element: <HallOwnerSignUp />,
+  },
 ]);

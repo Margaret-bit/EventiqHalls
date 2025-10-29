@@ -18,6 +18,7 @@ import AllVenues from "../pages/IndividualDashboard/AllVenues";
 import Indoor from "../pages/IndividualDashboard/Indoor";
 import Outdoor from "../pages/IndividualDashboard/Outdoor";
 import Multipurpose from "../pages/IndividualDashboard/Multipurpose";
+import SignupIndividual from "../pages/auth/individual/SignupIndividual";
 
 export const Element = createBrowserRouter([
   {
@@ -91,8 +92,8 @@ export const Element = createBrowserRouter([
     path: "/signup-hallowner",
     element: <HallOwnerSignUp />,
   },
-   {
-    path: "/signup-inidividual",
-    element: <HallOwnerSignUp />,
+  {
+    path: "/signup-individual",
+    element: <SignupIndividual />,
   },
 ]);

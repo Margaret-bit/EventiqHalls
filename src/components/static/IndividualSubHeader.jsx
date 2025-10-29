@@ -49,22 +49,22 @@ const Individual_subHeader = () => {
           <Label>All Venues</Label>
         </NavButton>
         <NavButton
-          active={isActive("/individual-dashboard/indoor-halls")}
-          onClick={() => navigate("/individual-dashboard/indoor-halls")}
+          active={isActive("/individual-dashboard/indoor")}
+          onClick={() => navigate("/individual-dashboard/indoor")}
         >
           <IconWrapper>{getIcon("indoor-halls")}</IconWrapper>
           <Label>Indoor Halls</Label>
         </NavButton>
         <NavButton
-          active={isActive("/individual-dashboard/outdoor-halls")}
-          onClick={() => navigate("/individual-dashboard/outdoor-halls")}
+          active={isActive("/individual-dashboard/outdoor")}
+          onClick={() => navigate("/individual-dashboard/outdoor")}
         >
           <IconWrapper>{getIcon("outdoor-halls")}</IconWrapper>
           <Label>Outdoor Venues</Label>
         </NavButton>
         <NavButton
-          active={isActive("/individual-dashboard/multipurpose-halls")}
-          onClick={() => navigate("/individual-dashboard/multipurpose-halls")}
+          active={isActive("/individual-dashboard/multipurpose")}
+          onClick={() => navigate("/individual-dashboard/multipurpose")}
         >
           <IconWrapper>{getIcon("multipurpose")}</IconWrapper>
           <Label>Multipurpose</Label>

@@ -13,6 +13,7 @@ const LandingpageHeader = () => {
         </NavLinks>
 
         <Nav_Buttons>
+  
           <Login_Button>Log In</Login_Button>
         </Nav_Buttons>
       </Nav_Content>

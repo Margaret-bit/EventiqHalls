@@ -103,6 +103,5 @@ const TextWrapper = styled.div`
     font-weight: 400;
     color: #fff;
     margin-top: 0;
-    /* margin-left: 0; */
   }
 `;

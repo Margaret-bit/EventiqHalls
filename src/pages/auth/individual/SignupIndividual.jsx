@@ -1,5 +1,13 @@
 import { useState, useEffect, useRef } from "react";
-import { User, Mail, Lock, Eye, EyeOff, ShieldCheck, ArrowLeft } from "lucide-react";
+import {
+  User,
+  Mail,
+  Lock,
+  Eye,
+  EyeOff,
+  ShieldCheck,
+  ArrowLeft,
+} from "lucide-react";
 import "./SignupIndividual.css";
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +20,7 @@ const SignupIndividual = () => {
     password: "",
     termsAccepted: false,
   });
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -25,14 +33,9 @@ const SignupIndividual = () => {
   const handleSubmit = () => {
     console.log("Account created:", formData);
   };
-  
-
-
-
 
   return (
     <div className="signup-container">
-      {/* Left Section */}
       <div className="left-section">
         <div
           className="bg-image"
@@ -46,8 +49,6 @@ const SignupIndividual = () => {
           <ArrowLeft size={20} />
         </button>
 
-          
-
         <div className="left-content">
           <div className="badge">FOR INDIVIDUALS</div>
           <h1>
@@ -55,17 +56,17 @@ const SignupIndividual = () => {
             <br /> You'll Love
           </h1>
           <p>
-            Find and book the perfect hall and services for your next event, fast and easy.
+            Find and book the perfect hall and services for your next event,
+            fast and easy.
           </p>
         </div>
       </div>
 
-      {/* Right Section */}
       <div className="right-section">
         <div className="form-wrapper">
           <div className="form-header">
             <div className="user-icon">
-              <User size={20} color="#7e22ce" />
+              <User size={20} color="purple" />
             </div>
             <h2>Individual</h2>
           </div>
@@ -145,7 +146,8 @@ const SignupIndividual = () => {
                 onChange={handleChange}
               />
               <label>
-                I have read the <a href="#">Terms and Conditions</a> and I agree to it
+                I have read the <a href="#">Terms and Conditions</a> and I agree
+                to it
               </label>
             </div>
 

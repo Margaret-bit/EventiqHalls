@@ -55,7 +55,7 @@ const Blur = styled.div`
 `;
 const CardContainer = styled.div`
   /* background: white; */
-  width: 270px;
+  width: 318px;
   transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
@@ -65,7 +65,7 @@ const CardContainer = styled.div`
 const ImageContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 270px;
+  height: 290px;
   overflow: hidden;
   background: #f3f4f6;
   border-radius: 0.75rem;
@@ -113,7 +113,7 @@ const VenueName = styled.h3`
 `;
 
 const VenueLocation = styled.p`
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #6b7280;
   /* margin-bottom: 0.75rem; */
   margin: 0;

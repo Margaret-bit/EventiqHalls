@@ -31,19 +31,25 @@ const PageHeader = styled.div`
 `;
 
 const PageTitle = styled.h1`
-  font-size: 2rem;
-  font-weight: 700;
-  color: #1f2937;
+  color: #0a0a0a;
+  font-family: Poppins;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px;
   margin-bottom: 0.5rem;
 `;
 
 const PageSubtitle = styled.p`
-  color: #6b7280;
-  font-size: 0.95rem;
+  color: #717182;
+  font-family: Poppins;
+  font-size: 16px;
 `;
 
 const VenuesGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  gap: 25px;
+  height: 90%;
 `;

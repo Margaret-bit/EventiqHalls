@@ -10,7 +10,6 @@ import Notification from "../pages/Body/Notification";
 import ProfileSetting from "../pages/Body/ProfileSetting";
 import LandingPageLayout from "../components/layout/LandingPageLayout";
 import HomePage from "../pages/Landing/HomePage";
-// import LandingPage from "../pages/Landing0/LandingPage";
 import HallOwnerLogin from "../pages/auth/HallOwner/HallOwnerLogin";
 import HallOwnerSignUp from "../pages/auth/HallOwner/HallOwnerSignUp";
 import IndividualLayout from "../components/layout/IndividualLayout";
@@ -19,6 +18,11 @@ import Indoor from "../pages/IndividualDashboard/Indoor";
 import Outdoor from "../pages/IndividualDashboard/Outdoor";
 import Multipurpose from "../pages/IndividualDashboard/Multipurpose";
 import SignupIndividual from "../pages/auth/individual/SignupIndividual";
+import DetailsPage from "../pages/IndividualDashboard/DetailsPage";
+import MyProfile from "./../pages/IndividualDashboard/Profile/MyProfile";
+import MyBooking from "./../pages/IndividualDashboard/Profile/MyBooking";
+import MyNotification from "./../pages/IndividualDashboard/Profile/MyNotification";
+import Setting from "./../pages/IndividualDashboard/Profile/Setting";
 
 export const Element = createBrowserRouter([
   {
@@ -72,9 +76,30 @@ export const Element = createBrowserRouter([
         path: "/individual-dashboard/multipurpose",
         element: <Multipurpose />,
       },
+      {
+        path: "/individual-dashboard/venue/:id",
+        element: <DetailsPage />,
+      },
     ],
   },
-
+  {
+    path: "/individual-dashboard/MyProfile",
+    element: <MyProfile />,
+    children: [
+      {
+        path: "/individual-dashboard/MyProfile/bookings",
+        element: <MyBooking />,
+      },
+      {
+        path: "/individual-dashboard/MyProfile/notifications",
+        element: <MyNotification />,
+      },
+      {
+        path: "/individual-dashboard/MyProfile/settings",
+        element: <Setting />,
+      },
+    ],
+  },
   {
     path: "/login",
     element: <Login />,

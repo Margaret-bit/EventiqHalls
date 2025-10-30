@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Building2, Home, Trees, Zap, MapPin, ChevronDown } from "lucide-react";
+import { Table, Building2, TreePine,  MapPin, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 const Individual_subHeader = () => {
@@ -27,15 +27,15 @@ const Individual_subHeader = () => {
   ];
 
   const iconMap = {
-    "all-venues": Building2,
-    "indoor-halls": Home,
-    "outdoor-halls": Trees,
-    multipurpose: Zap,
+    "all-venues": Table,
+    "indoor-halls": Building2,
+    "outdoor-halls": TreePine,
+    multipurpose: Table,
   };
 
   const getIcon = (type) => {
     const IconComponent = iconMap[type];
-    return IconComponent ? <IconComponent size={20} /> : null;
+    return IconComponent ? <IconComponent size={25} /> : null;
   };
 
   return (

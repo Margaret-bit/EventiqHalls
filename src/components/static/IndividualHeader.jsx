@@ -42,7 +42,7 @@ const Individual_header = () => {
               <div className="menu">
                 <div className="menu-item">
                   <div className="indicator"></div>
-                  <Link to="/profile" className="link">
+                  <Link to="/individual-dashboard/MyProfile" className="link">
                     <span>View Profile</span>
                   </Link>
                 </div>
@@ -84,14 +84,13 @@ const HeaderContent = styled.div`
     width: 20%;
     height: 65px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
 
     h1 {
       margin: 0;
       font-weight: lighter;
-      color: #5d3fd3;
+      color: #603379;
       font-size: 2.2rem;
       font-family: "Yesteryear", cursive;
     }

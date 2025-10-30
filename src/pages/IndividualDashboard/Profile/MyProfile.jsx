@@ -87,7 +87,7 @@ const MyProfile = () => {
 };
 
 export default MyProfile;
-
+// the styled component
 const Holder = styled.div`
   width: 100%;
   height: 110vh;

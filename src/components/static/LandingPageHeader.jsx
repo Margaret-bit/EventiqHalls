@@ -81,7 +81,7 @@ const NavLinks = styled.div`
 const Logo = styled.h1`
   font-family: "Brush Script MT", cursive;
   font-size: 32px;
-  color: #9333ea;
+  color: #fff;
   font-weight: 400;
   font-style: italic;
 `;

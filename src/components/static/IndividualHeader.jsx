@@ -1,20 +1,61 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Search } from "lucide-react";
+import { FiLogOut } from "react-icons/fi";
 import styled from "styled-components";
 
 const Individual_header = () => {
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+
+  const toggleDropdown = () => {
+    setShowProfileDropdown(!showProfileDropdown);
+  };
+
   return (
     <HeaderContainer>
       <HeaderContent>
-        <Logo>Eventiq</Logo>
+        <div className="holder">
+          <h1>Eventiq</h1>
+          <p>Your event starts here</p>
+        </div>
+
         <SearchContainer>
           <SearchIconHolder>
             <Search size={18} color="#717182" />
           </SearchIconHolder>
           <SearchInput type="text" placeholder="Search" />
         </SearchContainer>
+
         <UserSection>
-          <UserAvatar>P</UserAvatar>
+          <div className="avatar" onClick={toggleDropdown}>
+            P
+          </div>
           <UserName>Princess</UserName>
+
+          {showProfileDropdown && (
+            <div className="profile-dropdown">
+              <div className="user-info">
+                <h4>Princess Umez</h4>
+                <p>princessumez@gmail.com</p>
+              </div>
+
+              <div className="menu">
+                <div className="menu-item">
+                  <div className="indicator"></div>
+                  <Link to="/individual-dashboard/MyProfile" className="link">
+                    <span>View Profile</span>
+                  </Link>
+                </div>
+                <div className="menu-item">
+                  <span>Help Center</span>
+                </div>
+                <div className="menu-item logout">
+                  <FiLogOut className="icon" />
+                  <span>Log out</span>
+                </div>
+              </div>
+            </div>
+          )}
         </UserSection>
       </HeaderContent>
     </HeaderContainer>
@@ -22,11 +63,6 @@ const Individual_header = () => {
 };
 
 export default Individual_header;
-const UserName = styled.h3`
-  font-size: 18px;
-  font-weight: 500;
-  color: #0a0a0a;
-`;
 
 const HeaderContainer = styled.header`
   background-color: #ffffff;
@@ -39,17 +75,31 @@ const HeaderContainer = styled.header`
 
 const HeaderContent = styled.div`
   max-width: 1400px;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
+  height: 95px;
 
-const Logo = styled.div`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #6b46c1;
-  letter-spacing: -0.5px;
+  .holder {
+    width: 20%;
+    height: 65px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    h1 {
+      margin: 0;
+      font-weight: lighter;
+      color: #603379;
+      font-size: 2.2rem;
+      font-family: "Yesteryear", cursive;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+  }
 `;
 
 const SearchContainer = styled.div`
@@ -62,6 +112,7 @@ const SearchContainer = styled.div`
   border-radius: 0.5rem;
   overflow: hidden;
 `;
+
 const SearchIconHolder = styled.div`
   width: 40px;
   height: 100%;
@@ -85,18 +136,113 @@ const UserSection = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    background: #f0f0f0;
+  }
+
+  .avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6b46c1, #9333ea);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid #e0aa3d;
+  }
+
+  .profile-dropdown {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 220px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 12px 0;
+    color: #333;
+    z-index: 100;
+    cursor: pointer;
+
+    .user-info {
+      padding: 0 16px 10px;
+      border-bottom: 1px solid #eee;
+
+      h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #000;
+        margin-bottom: 4px;
+      }
+
+      p {
+        font-size: 0.9rem;
+        color: #777;
+        margin: 0;
+      }
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      margin-top: 5px;
+
+      .menu-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+
+        .link {
+          text-decoration: none;
+          color: inherit;
+          font-size: 0.9rem;
+        }
+
+        &:hover {
+          background: #f8f8f8;
+        }
+
+        .indicator {
+          width: 4px;
+          height: 16px;
+          background: #5d3fd3;
+          border-radius: 4px;
+        }
+
+        span {
+          font-size: 0.9rem;
+        }
+      }
+
+      .logout {
+        color: red;
+        border-top: 1px solid #eee;
+        margin-top: 5px;
+        padding-top: 10px;
+
+        .icon {
+          font-size: 1rem;
+        }
+
+        &:hover {
+          background: #ffecec;
+        }
+      }
+    }
+  }
 `;
 
-const UserAvatar = styled.div`
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #6b46c1, #9333ea);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  border: 2px solid #e0aa3d;
+const UserName = styled.h3`
+  font-size: 18px;
+  font-weight: 500;
+  color: #0a0a0a;
 `;

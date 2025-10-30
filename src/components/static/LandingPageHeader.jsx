@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import SignupDropdown from "./signupDropdown/SignupDropdown";
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 
 const LandingpageHeader = () => {
   return (

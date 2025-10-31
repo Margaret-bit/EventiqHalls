@@ -74,7 +74,7 @@ const Feature_cards = () => {
   );
 };
 
-export default Feature_cards;
+export default Feature_cards
 const Line = styled.div`
   color: white;
   height: auto;

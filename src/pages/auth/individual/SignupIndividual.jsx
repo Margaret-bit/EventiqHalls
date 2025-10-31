@@ -28,7 +28,6 @@ const SignupIndividual = () => {
 
   const navigate = useNavigate();
 
-  // Handle form input
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({

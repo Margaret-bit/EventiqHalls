@@ -32,7 +32,7 @@ const Hero = () => {
           <source src="https://res.cloudinary.com/depuy7bkr/video/upload/v1761914604/VID-20251027-WA0002_video_evenitq_mwoige.mp4" type="video/mp4" />
         </Video>
         <Overlay></Overlay>
-
+      //h
         <Hero_content>
           <h1>Find, Book, and Manage Event Halls with Ease</h1>
           <p>

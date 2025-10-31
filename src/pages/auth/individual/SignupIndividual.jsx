@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import {
   User,
   Mail,
@@ -10,9 +10,14 @@ import {
 } from "lucide-react";
 import "./SignupIndividual.css";
 import { useNavigate } from "react-router-dom";
+import { LuUser } from "react-icons/lu";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignupIndividual = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     firstName: "",
     surname: "",
@@ -20,8 +25,10 @@ const SignupIndividual = () => {
     password: "",
     termsAccepted: false,
   });
+
   const navigate = useNavigate();
 
+  // Handle form input
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -30,30 +37,31 @@ const SignupIndividual = () => {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log("Account created:", formData);
+    toast.success("Account created successfully!");
   };
 
   return (
-    <div className="signup-container">
+    <section className="signup-container">
       <div className="left-section">
         <div
-          className="bg-image"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1519167758481-83f29da8c2b7?w=800')",
-          }}
+          className="bg-image2"
+          style={{ backgroundImage: "url('src/assets/leftsideclient.png')" }}
         ></div>
 
-        <button className="back-btn" onClick={() => navigate("/")}>
+        <button
+          className="back-btn2"
+          onClick={() => navigate("/", { replace: true })}
+        >
           <ArrowLeft size={20} />
         </button>
 
         <div className="left-content">
           <div className="badge">FOR INDIVIDUALS</div>
           <h1>
-            Book Spaces
-            <br /> You'll Love
+            Book Spaces <br /> You'll Love.
           </h1>
           <p>
             Find and book the perfect hall and services for your next event,
@@ -62,22 +70,19 @@ const SignupIndividual = () => {
         </div>
       </div>
 
-      <div className="right-section">
+      <section className="right-section">
         <div className="form-wrapper">
           <div className="form-header">
             <div className="user-icon">
               <User size={20} color="purple" />
             </div>
-            <h2>Individual</h2>
           </div>
-          <p className="form-subtitle">Create your account to get started</p>
 
-          <div className="form-content">
-            <div className="two-cols">
-              <div className="input-group">
+          <form className="form-content" onSubmit={handleSubmit}>
+            <div className="two-cols-ind">
+              <div className="input-group1-ind">
                 <label>
-                  <User size={14} className="label-icon" />
-                  First Name
+                  <User size={14} className="label-icon" /> First Name
                 </label>
                 <input
                   type="text"
@@ -86,11 +91,14 @@ const SignupIndividual = () => {
                   onChange={handleChange}
                   placeholder="John"
                 />
+                {errors.firstName && (
+                  <p className="error-text">{errors.firstName}</p>
+                )}
               </div>
-              <div className="input-group">
+
+              <div className="input-group2-ind">
                 <label>
-                  <User size={14} className="label-icon" />
-                  Surname
+                  <User size={14} className="label-icon" /> Surname
                 </label>
                 <input
                   type="text"
@@ -99,13 +107,15 @@ const SignupIndividual = () => {
                   onChange={handleChange}
                   placeholder="Doe"
                 />
+                {errors.surname && (
+                  <p className="error-text">{errors.surname}</p>
+                )}
               </div>
             </div>
 
-            <div className="input-group">
+            <div className="input-group-email-ind">
               <label>
-                <Mail size={14} className="label-icon" />
-                Email Address
+                <Mail size={14} className="label-icon" /> Email Address
               </label>
               <input
                 type="email"
@@ -114,14 +124,14 @@ const SignupIndividual = () => {
                 onChange={handleChange}
                 placeholder="youremail@example.com"
               />
+              {errors.email && <p className="error-text">{errors.email}</p>}
             </div>
 
-            <div className="input-group password-field">
+            <div className="input-group-ind password-field-ind">
               <label>
-                <Lock size={14} className="label-icon" />
-                Password
+                <Lock size={14} className="label-icon-ind" /> Password
               </label>
-              <div className="password-box">
+              <div className="password-box-ind">
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
@@ -136,6 +146,9 @@ const SignupIndividual = () => {
                   {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
                 </button>
               </div>
+              {errors.password && (
+                <p className="error-text">{errors.password}</p>
+              )}
             </div>
 
             <div className="checkbox-group">
@@ -150,23 +163,32 @@ const SignupIndividual = () => {
                 to it
               </label>
             </div>
+            {errors.termsAccepted && (
+              <p className="error-text">{errors.termsAccepted}</p>
+            )}
 
-            <button className="submit-btn" onClick={handleSubmit}>
-              Create Account
+            <button
+              className="submit-btn-ind"
+              style={{ background: "#603379" }}
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? "Creating Account..." : "Create Account"}
             </button>
 
-            <p className="login-text">
-              Already have an account? <a href="#">Log in</a>
+            <p className="login-text-ind">
+              Already have an account? <a href="/login">Log in</a>
             </p>
-          </div>
+          </form>
 
-          <div className="security-note">
-            <ShieldCheck size={16} color="#22c55e" />
+          <div className="security-note-ind">
+            <ShieldCheck size={14} color="#10B981" />
             <span>Secure and encrypted platform</span>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+      <ToastContainer />
+    </section>
   );
 };
 

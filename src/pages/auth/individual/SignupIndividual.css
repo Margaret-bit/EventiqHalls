@@ -1,3 +1,4 @@
+
 .signup-container {
   display: flex;
   min-height: 100vh;
@@ -79,6 +80,7 @@
   max-width: 28rem;
 }
 
+
 .right-section {
   width: 50%;
   display: flex;
@@ -125,17 +127,117 @@
   margin-bottom: 1.5rem;
 }
 
+
 .form-content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
+
+
 .two-cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   gap: 1rem;
 }
+
+.two-cols > * {
+  flex: 1;
+}
+
+.input-group1 label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;               
+}
+
+.input-group1 input {
+  padding: 0.65rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border 0.2s;
+  width: 180px;
+
+  
+}
+
+.input-group1 input:focus {
+  border-color: #7e22ce;
+  box-shadow: 0 0 0 2px rgba(126, 34, 206, 0.2);
+}
+
+.input-group2 label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;               
+}
+
+.input-group2 input {
+  padding: 0.65rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border 0.2s;
+  width: 180px;
+
+  
+}
+
+.input-group2 input:focus {
+  border-color: #7e22ce;
+  box-shadow: 0 0 0 2px rgba(126, 34, 206, 0.2);
+}
+
+.input-group1 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  
+}
+
+.input-group2 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  
+}
+
+.input-group-email label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;               
+}
+
+.input-group-email input {
+  padding: 0.65rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border 0.2s;
+  width: 26rem;
+
+  
+}
+
+.input-group-email input:focus {
+  border-color: #7e22ce;
+  box-shadow: 0 0 0 2px rgba(126, 34, 206, 0.2);
+}
+
+.input-group-email {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  
+}
+
 
 .input-group {
   display: flex;
@@ -152,9 +254,16 @@
   margin-bottom: 0.375rem;
 }
 
+label{
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
 .label-icon {
   width: 14px;
   height: 14px;
+  
 }
 
 .input-group input {
@@ -209,10 +318,14 @@
   color: #374151;
 }
 
+
 .checkbox-group {
   display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
+  
+justify-content: space-between;
+  gap: 2rem;
+  margin: 1rem 0;
+  font-size: 0.875rem;
 }
 
 .checkbox-group input[type="checkbox"] {
@@ -222,6 +335,8 @@
   accent-color: purple;
   cursor: pointer;
 }
+
+
 
 .checkbox-group label {
   font-size: 0.875rem;
@@ -238,6 +353,7 @@
 .checkbox-group a:hover {
   color: purple;
 }
+
 
 .submit-btn {
   width: 100%;
@@ -256,6 +372,7 @@
   background-color: purple;
 }
 
+
 .login-text {
   text-align: center;
   font-size: 0.875rem;
@@ -273,6 +390,7 @@
   color: purple;
 }
 
+
 .security-note {
   display: flex;
   align-items: center;
@@ -287,6 +405,7 @@
   font-size: 0.75rem;
   color: #6b7280;
 }
+
 
 @media (max-width: 1024px) {
   .signup-container {

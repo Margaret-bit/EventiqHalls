@@ -29,7 +29,7 @@ const Hero = () => {
     <>
       <Container id="home">
         <Video autoPlay loop muted playsInline>
-          <source src="src/assets/halls.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/depuy7bkr/video/upload/v1761914604/VID-20251027-WA0002_video_evenitq_mwoige.mp4" type="video/mp4" />
         </Video>
         <Overlay></Overlay>
 

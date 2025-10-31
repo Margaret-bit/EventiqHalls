@@ -31,7 +31,10 @@ const SignupIndividual = () => {
 
   const navigate = useNavigate();
 
+<<<<<<< HEAD
+=======
  
+>>>>>>> fef4d131fa4c1f27c5ebd9a2052fcc80b71c6b7a
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Table, Building2, TreePine,  MapPin, ChevronDown } from "lucide-react";
+import { Table, Building2, TreePine, MapPin, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 const Individual_subHeader = () => {
@@ -107,7 +107,7 @@ const SubHeaderContainer = styled.div`
   border-bottom: 1px solid #9d9d9d;
   padding: 0 4rem;
   position: sticky;
-  top: 60px;
+  top: 121px;
   z-index: 99;
 `;
 

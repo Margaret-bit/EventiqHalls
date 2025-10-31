@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Table, Building2, TreePine,  MapPin, ChevronDown } from "lucide-react";
+import { Table, Building2, TreePine, MapPin, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 const Individual_subHeader = () => {
@@ -109,6 +109,18 @@ const SubHeaderContainer = styled.div`
   position: sticky;
   top: 60px;
   z-index: 99;
+
+  @media (max-width: 1024px) {
+    padding: 0 2rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 0.5rem;
+  }
 `;
 
 const SubHeaderContent = styled.div`
@@ -119,6 +131,26 @@ const SubHeaderContent = styled.div`
   gap: 2rem;
   padding-top: 1em;
   padding-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #ccc;
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  }
 `;
 
 const NavButton = styled.button`
@@ -137,19 +169,11 @@ const NavButton = styled.button`
   transition: all 0.3s ease;
   white-space: nowrap;
   background-color: ${(props) => (props.active ? "#f3e8ff" : "transparent")};
-`;
 
-const IconWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: inherit;
-`;
-
-const Label = styled.span`
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #0a0a0a;
+  @media (max-width: 480px) {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
 `;
 
 const FilterSection = styled.div`
@@ -158,6 +182,10 @@ const FilterSection = styled.div`
   align-items: center;
   gap: 1rem;
   position: relative;
+
+  @media (max-width: 480px) {
+    flex-shrink: 0;
+  }
 `;
 
 const FilterButton = styled.button`
@@ -172,10 +200,16 @@ const FilterButton = styled.button`
   font-size: 0.9rem;
   color: ${(props) => (props.isOpen ? "#6b46c1" : "#374151")};
   transition: all 0.3s ease;
+  white-space: nowrap;
 
   &:hover {
     background-color: ${(props) => (props.isOpen ? "#f3e8ff" : "#e5e7eb")};
     border-color: ${(props) => (props.isOpen ? "#6b46c1" : "#d1d5db")};
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
   }
 `;
 
@@ -223,5 +257,27 @@ const DropdownItem = styled.button`
 
   &:last-child {
     border-radius: 0 0 0.5rem 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.75rem;
+  }
+`;
+
+const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+`;
+
+const Label = styled.span`
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: inherit;
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
   }
 `;

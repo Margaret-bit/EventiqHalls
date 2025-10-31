@@ -55,7 +55,7 @@ const Blur = styled.div`
 `;
 const CardContainer = styled.div`
   /* background: white; */
-  width: 318px;
+  width: 293px;
   transition: all 0.3s ease;
   cursor: pointer;
   display: flex;

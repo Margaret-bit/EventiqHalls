@@ -1,6 +1,6 @@
 import React from 'react';
 import { X, User, Building2 } from 'lucide-react';
-import './SignupModal.css';
+import './signupModal.css';
 import { useNavigate } from 'react-router-dom';
 
 const SignupModal = ({ onClose }) => {

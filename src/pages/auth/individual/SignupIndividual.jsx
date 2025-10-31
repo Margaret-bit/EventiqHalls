@@ -31,10 +31,6 @@ const SignupIndividual = () => {
 
   const navigate = useNavigate();
 
-<<<<<<< HEAD
-=======
- 
->>>>>>> fef4d131fa4c1f27c5ebd9a2052fcc80b71c6b7a
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -51,7 +47,7 @@ const SignupIndividual = () => {
 
   return (
     <div className="signup-container-ind">
-        <ToastContainer position="top-right" autoClose={3000} />
+      <ToastContainer position="top-right" autoClose={3000} />
       <div className="left-section2">
         <div
           className="bg-image2"
@@ -79,11 +75,13 @@ const SignupIndividual = () => {
 
       <div className="right-section2">
         <div className="form-wrapper2">
-             <div className="form-header2">
+          <div className="form-header2">
             <LuUser className="user-icon2" size={30} />
             <div className="form-header-text2">
               <h2>Client </h2>
-              <p className="form-subtitle2">Create your account to get started</p>
+              <p className="form-subtitle2">
+                Create your account to get started
+              </p>
             </div>
           </div>
 
@@ -161,12 +159,11 @@ const SignupIndividual = () => {
             </div>
 
             <div className="checkbox-group-ind1">
-           
               <label>
                 I have read the <a href="#">Terms and Conditions</a> and I agree
                 to it
               </label>
-                 <input
+              <input
                 type="checkbox"
                 name="termsAccepted"
                 checked={formData.termsAccepted}
@@ -196,11 +193,8 @@ const SignupIndividual = () => {
             <span>Secure and encrypted platform</span>
           </div>
         </div>
-        
-
-        </div>
+      </div>
     </div>
-    
   );
 };
 

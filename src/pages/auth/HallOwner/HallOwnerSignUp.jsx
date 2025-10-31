@@ -8,13 +8,15 @@ import { User, Mail, Lock, Eye, EyeOff, ShieldCheck } from "lucide-react";
 import { LuUser } from "react-icons/lu";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import VerificationModal from "../../../components/static/VerificationModal/VerificationModal";
 
 const SignupHallOwner = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+  const [isVerificationOpen, setIsVerificationOpen] = useState(false);
+
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -33,24 +35,7 @@ const SignupHallOwner = () => {
     }));
   };
 
-  // Validate inputs
-  // const validateForm = () => {
-  //   const newErrors = {};
-
-  //   if (!formData.firstName.trim()) newErrors.firstName = "First name is required";
-  //   if (!formData.surname.trim()) newErrors.surname = "Surname is required";
-  //   if (!formData.email.trim()) newErrors.email = "Email is required";
-  //   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
-  //     newErrors.email = "Invalid email format";
-  //   if (!formData.password.trim()) newErrors.password = "Password is required";
-  //   else if (formData.password.length < 8)
-  //     newErrors.password = "Password must be at least 8 characters";
-  //   if (!formData.termsAccepted)
-  //     newErrors.termsAccepted = "You must accept the terms";
-
-  //   setErrors(newErrors);
-  //   return Object.keys(newErrors).length === 0;
-  // };
+  
 
   const validateForm = () => {
   if (!formData.firstName.trim()) {
@@ -103,7 +88,8 @@ try {
 
   console.log("Signup successful:", response.data);
   toast.success("Account created successfully! 🎉");
-  setTimeout(() => navigate("/dashboardHome"), 2000); // slight delay to show toast
+  // setTimeout(() => navigate("/dashboardHome"), 2000); 
+  setIsVerificationOpen(true);
 } catch (error) {
   console.error("Signup failed:", error);
   if (error.response) {
@@ -120,10 +106,14 @@ try {
   return (
     <section className="signup-container-client">
        <ToastContainer position="top-right" autoClose={3000} />
+       {isVerificationOpen && (
+  <VerificationModal onClose={() => setIsVerificationOpen(false)} email={formData.email} />
+)}
+
       <div className="left-section1">
         <div
           className="bg-image1"
-          style={{ backgroundImage: "url('src/assets/leftsidevenueowner.png')" }}
+          style={{ backgroundImage: "url('https://res.cloudinary.com/depuy7bkr/image/upload/v1761918862/left_side_venue_owner_eventQ3_wb8oaj.png')" }}
         ></div>
 
         <button className="back-btn1" onClick={() => navigate("/", { replace: true })}>
@@ -236,9 +226,13 @@ try {
                 <p className="error-text">{errors.termsAccepted}</p>
               )}
 
+
+          
             <button className="submit-btn-client" style={{background:"#603379"}} type="submit" disabled={loading}>
               {loading ? "Creating Account..." : "Create Account"}
             </button>
+
+            
 
             <p className="login-text-client">
               Already have an account? <a href="/login">Log in</a>

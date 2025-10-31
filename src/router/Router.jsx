@@ -1,5 +1,7 @@
 import React from "react";
-import { createBrowserRouter } from "react-router-dom";
+// import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
+
 import Dashboardlayout from "../components/layout/Dashboardlayout";
 import DashboardHome from "../pages/Body/DashboardHome";
 import Login from "../pages/auth/Login";
@@ -24,7 +26,7 @@ import MyBooking from "./../pages/IndividualDashboard/Profile/MyBooking";
 import MyNotification from "./../pages/IndividualDashboard/Profile/MyNotification";
 import Setting from "./../pages/IndividualDashboard/Profile/Setting";
 
-export const Element = createBrowserRouter([
+export const Element = createHashRouter([
   {
     path: "/",
     element: <LandingPageLayout />,

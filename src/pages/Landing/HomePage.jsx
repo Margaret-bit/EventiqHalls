@@ -11,7 +11,6 @@ import FAQ from "../Landing/FAQ";
 const HomePage = () => {
   return (
     <>
-      "
       <Hero />
       <FeatureCards />
       <HowItWorks />

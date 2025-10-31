@@ -146,7 +146,7 @@ try {
         <div className="form-wrapper1" >
           
           <div className="form-header1">
-            <LuUser className="user-icon1" size={40} />
+            <LuUser className="user-icon1" size={30} />
             <div className="form-header-text1">
               <h2>Venue Owner/Manager </h2>
               <p className="form-subtitle1">Create your account to get started</p>
@@ -186,7 +186,7 @@ try {
 
             <div className="input-group-email-client">
               <label>
-                <Mail size={14} className="label-icon" /> Email Address
+                <Mail size={14} className="label-icon" /> Business Email Address
               </label>
               <input
                 type="email"
@@ -211,7 +211,7 @@ try {
                   placeholder="Create a strong password"
                 />
                 <button type="button" onClick={() => setShowPassword(!showPassword)}>
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
                 </button>
               </div>
               {errors.password && <p className="error-text">{errors.password}</p>}

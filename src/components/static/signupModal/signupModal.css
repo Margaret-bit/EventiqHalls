@@ -12,7 +12,7 @@
 .modal-container {
   background-color: white;
   border-radius: 0.5rem;
-  max-width: 28rem;
+  max-width: 35rem;
   width: 100%;
   padding: 1.5rem;
   position: relative;
@@ -69,24 +69,25 @@
   transition: background-color 0.2s;
   cursor: pointer;
   border: none;
+  height: 150px;
 }
 
 .option-primary {
-  background-color: #6d28d9;
+  background-color: #603379;
   color: white;
 }
 
 .option-primary:hover {
-  background-color: #5b21b6;
+  background-color: #400a5e;
 }
 
 .option-secondary {
   background-color: white;
-  border: 2px solid #fbbf24;
+  border: 1px solid #E0AA3D;
 }
 
 .option-secondary:hover {
-  background-color: #f9fafb;
+  background-color: #e6d8bc;
 }
 
 .option-icon {

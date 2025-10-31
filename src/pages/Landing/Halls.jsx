@@ -135,6 +135,8 @@ const Hall_rating = styled.div`
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  /* background-color: #fef3c7; */
+  padding: 0.15rem 0.8rem;
   border-radius: 0.375rem;
 `;
 const Hall_header = styled.div`
@@ -169,20 +171,23 @@ const Wrapper = styled.div`
   left: 0;
   background-color: #0000003c;
   padding: 20px;
+  z-index: 5;
 `;
 const Image_holder = styled.div`
-  width: 100%;
-  height: 300px;
-  border-radius: 15px;
-  position: relative;
+position: relative;
+ width: 290px;
+  height: 290px;
   overflow: hidden;
-  transition: all 350ms ease-in-out;
+  border-radius: 14px;
+  
   img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s;
+  border-radius: 14px;
   }
-  &:hover {
+  &:hover img {
     transform: scale(1.05);
   }
 `;
@@ -196,11 +201,11 @@ const Feature_badge = styled.div`
   border-radius: 2rem;
   display: flex;
   align-items: center;
-  height: 10px;
+  height: 0.5rem;
   gap: 0.25rem;
   font-size: 0.75rem;
   font-weight: 600;
-  z-index: 10;
+  z-index: 1;
 `;
 const Hall_card = styled.div`
   width: 320px;

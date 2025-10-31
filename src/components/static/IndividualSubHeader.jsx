@@ -107,7 +107,7 @@ const SubHeaderContainer = styled.div`
   border-bottom: 1px solid #9d9d9d;
   padding: 0 4rem;
   position: sticky;
-  top: 60px;
+  top: 121px;
   z-index: 99;
 
   @media (max-width: 1024px) {
@@ -116,10 +116,12 @@ const SubHeaderContainer = styled.div`
 
   @media (max-width: 768px) {
     padding: 0 1rem;
+    top: 100px;
   }
 
   @media (max-width: 480px) {
     padding: 0 0.5rem;
+    top: 80px;
   }
 `;
 
@@ -132,24 +134,26 @@ const SubHeaderContent = styled.div`
   padding-top: 1em;
   padding-bottom: 1rem;
 
+  @media (max-width: 1024px) {
+    gap: 1rem;
+  }
+
   @media (max-width: 768px) {
+    gap: 0.5rem;
     overflow-x: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: #ccc transparent;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 
     &::-webkit-scrollbar {
-      height: 6px;
+      display: none;
     }
+  }
 
-    &::-webkit-scrollbar-thumb {
-      background-color: #ccc;
-      border-radius: 3px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
+  @media (max-width: 480px) {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
   }
 `;
 
@@ -169,10 +173,58 @@ const NavButton = styled.button`
   transition: all 0.3s ease;
   white-space: nowrap;
   background-color: ${(props) => (props.active ? "#f3e8ff" : "transparent")};
+  flex-shrink: 0;
+
+  @media (max-width: 1024px) {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 0.6rem;
+    gap: 0.3rem;
+  }
 
   @media (max-width: 480px) {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.85rem;
+    padding: 0.4rem 0.5rem;
+    min-width: 70px;
+  }
+`;
+
+const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+
+  svg {
+    @media (max-width: 768px) {
+      width: 20px;
+      height: 20px;
+    }
+
+    @media (max-width: 480px) {
+      width: 18px;
+      height: 18px;
+    }
+  }
+`;
+
+const Label = styled.span`
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #0a0a0a;
+
+  @media (max-width: 1024px) {
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.65rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.6rem;
   }
 `;
 
@@ -182,9 +234,10 @@ const FilterSection = styled.div`
   align-items: center;
   gap: 1rem;
   position: relative;
+  flex-shrink: 0;
 
-  @media (max-width: 480px) {
-    flex-shrink: 0;
+  @media (max-width: 768px) {
+    margin-left: 0.5rem;
   }
 `;
 
@@ -207,9 +260,31 @@ const FilterButton = styled.button`
     border-color: ${(props) => (props.isOpen ? "#6b46c1" : "#d1d5db")};
   }
 
-  @media (max-width: 480px) {
-    padding: 0.4rem 0.75rem;
+  @media (max-width: 1024px) {
+    padding: 0.5rem 0.75rem;
     font-size: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+    gap: 0.3rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.75rem;
+
+    span {
+      display: none;
+    }
+  }
+
+  svg {
+    @media (max-width: 768px) {
+      width: 16px;
+      height: 16px;
+    }
   }
 `;
 
@@ -219,6 +294,13 @@ const ChevronIcon = styled.div`
   transition: transform 0.3s ease;
   transform: ${(props) => (props.isOpen ? "rotate(180deg)" : "rotate(0deg)")};
   color: inherit;
+
+  svg {
+    @media (max-width: 768px) {
+      width: 14px;
+      height: 14px;
+    }
+  }
 `;
 
 const DropdownMenu = styled.div`
@@ -233,6 +315,19 @@ const DropdownMenu = styled.div`
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   z-index: 50;
   overflow: hidden;
+  max-height: 300px;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    width: 10rem;
+    max-height: 250px;
+  }
+
+  @media (max-width: 480px) {
+    width: 9rem;
+    max-height: 200px;
+    right: -1rem;
+  }
 `;
 
 const DropdownItem = styled.button`
@@ -259,25 +354,13 @@ const DropdownItem = styled.button`
     border-radius: 0 0 0.5rem 0.5rem;
   }
 
-  @media (max-width: 480px) {
-    font-size: 0.85rem;
+  @media (max-width: 768px) {
     padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
   }
-`;
-
-const IconWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: inherit;
-`;
-
-const Label = styled.span`
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: inherit;
 
   @media (max-width: 480px) {
-    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
   }
 `;

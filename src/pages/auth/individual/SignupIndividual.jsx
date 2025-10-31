@@ -1,10 +1,26 @@
-import { useState, useEffect, useRef } from "react";
-import { User, Mail, Lock, Eye, EyeOff, ShieldCheck, ArrowLeft } from "lucide-react";
+import { useState } from "react";
+import {
+  User,
+  Mail,
+  Lock,
+  Eye,
+  EyeOff,
+  ShieldCheck,
+  ArrowLeft,
+} from "lucide-react";
 import "./SignupIndividual.css";
 import { useNavigate } from "react-router-dom";
+import { LuUser } from "react-icons/lu";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+
+//josh
 
 const SignupIndividual = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     firstName: "",
     surname: "",
@@ -12,7 +28,8 @@ const SignupIndividual = () => {
     password: "",
     termsAccepted: false,
   });
-    const navigate = useNavigate();
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -22,61 +39,116 @@ const SignupIndividual = () => {
     }));
   };
 
-  const handleSubmit = () => {
-    console.log("Account created:", formData);
+  const validateForm = () => {
+  if (!formData.firstName.trim()) {
+    toast.error("First name is required");
+    return false;
+  }
+
+  if (!formData.surname.trim()) {
+    toast.error("Surname is required");
+    return false;
+  }
+
+  if (!formData.email.trim()) {
+    toast.error("Email is required");
+    return false;
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    toast.error("Invalid email format");
+    return false;
+  }
+
+  if (!formData.password.trim()) {
+    toast.error("Password is required");
+    return false;
+  } else if (formData.password.length < 8) {
+    toast.error("Password must be at least 8 characters");
+    return false;
+  }
+
+  if (!formData.termsAccepted) {
+    toast.error("You must accept the terms and conditions");
+    return false;
+  }
+
+  return true; 
+};
+
+
+  // Handle submit with Axios
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    setLoading(true);
+
+try {
+  const response = await axios.post(
+    "https://eventiq-final-project.onrender.com/api/v1/register-client",
+    formData
+  );
+
+  console.log("Signup successful:", response.data);
+  toast.success("Account created successfully! 🎉");
+  setTimeout(() => navigate("/dashboardHome"), 2000); // slight delay to show toast
+} catch (error) {
+  console.error("Signup failed:", error);
+  if (error.response) {
+    toast.error(error.response.data.message || "Signup failed. Please try again.");
+  } else {
+    toast.error("Network error. Please check your internet connection.");
+  }
+} finally {
+    setLoading(false);
+  }
+
   };
-  
-
-
-
 
   return (
-    <div className="signup-container">
-      {/* Left Section */}
-      <div className="left-section">
+    <div className="signup-container-ind">
+      <ToastContainer position="top-right" autoClose={3000} />
+      <div className="left-section2">
         <div
-          className="bg-image"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1519167758481-83f29da8c2b7?w=800')",
-          }}
+          className="bg-image2"
+          style={{ backgroundImage: "url('https://res.cloudinary.com/depuy7bkr/image/upload/v1761918819/left_side_client_eventiQ2_z4aumq.png')" }}
         ></div>
 
-        <button className="back-btn" onClick={() => navigate("/")}>
+        <button
+          className="back-btn2"
+          onClick={() => navigate("/", { replace: true })}
+        >
           <ArrowLeft size={20} />
         </button>
 
-          
-
-        <div className="left-content">
-          <div className="badge">FOR INDIVIDUALS</div>
+        <div className="left-content2">
+          <div className="badge2">FOR CLIENTS</div>
           <h1>
-            Book Spaces
-            <br /> You'll Love
+            Book Spaces <br /> You'll Love.
           </h1>
           <p>
-            Find and book the perfect hall and services for your next event, fast and easy.
+            Find and book the perfect hall and services for your next event,
+            fast and easy.
           </p>
         </div>
       </div>
 
-      {/* Right Section */}
-      <div className="right-section">
-        <div className="form-wrapper">
-          <div className="form-header">
-            <div className="user-icon">
-              <User size={20} color="#7e22ce" />
+      <div className="right-section2">
+        <div className="form-wrapper2">
+          <div className="form-header2">
+            <LuUser className="user-icon2" size={30} />
+            <div className="form-header-text2">
+              <h2>Client </h2>
+              <p className="form-subtitle2">
+                Create your account to get started
+              </p>
             </div>
-            <h2>Individual</h2>
           </div>
-          <p className="form-subtitle">Create your account to get started</p>
 
-          <div className="form-content">
-            <div className="two-cols">
-              <div className="input-group">
+          <form className="form-content" onSubmit={handleSubmit}>
+            <div className="two-cols-ind">
+              <div className="input-group1-ind">
                 <label>
-                  <User size={14} className="label-icon" />
-                  First Name
+                  <User size={14} className="label-icon" /> First Name
                 </label>
                 <input
                   type="text"
@@ -85,11 +157,14 @@ const SignupIndividual = () => {
                   onChange={handleChange}
                   placeholder="John"
                 />
+                {errors.firstName && (
+                  <p className="error-text">{errors.firstName}</p>
+                )}
               </div>
-              <div className="input-group">
+
+              <div className="input-group2-ind">
                 <label>
-                  <User size={14} className="label-icon" />
-                  Surname
+                  <User size={14} className="label-icon" /> Surname
                 </label>
                 <input
                   type="text"
@@ -98,13 +173,15 @@ const SignupIndividual = () => {
                   onChange={handleChange}
                   placeholder="Doe"
                 />
+                {errors.surname && (
+                  <p className="error-text">{errors.surname}</p>
+                )}
               </div>
             </div>
 
-            <div className="input-group">
+            <div className="input-group-email-ind">
               <label>
-                <Mail size={14} className="label-icon" />
-                Email Address
+                <Mail size={14} className="label-icon" /> Email Address
               </label>
               <input
                 type="email"
@@ -113,14 +190,14 @@ const SignupIndividual = () => {
                 onChange={handleChange}
                 placeholder="youremail@example.com"
               />
+              {errors.email && <p className="error-text">{errors.email}</p>}
             </div>
 
-            <div className="input-group password-field">
+            <div className="input-group-ind password-field-ind">
               <label>
-                <Lock size={14} className="label-icon" />
-                Password
+                <Lock size={14} className="label-icon-ind" /> Password
               </label>
-              <div className="password-box">
+              <div className="password-box-ind">
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
@@ -132,34 +209,46 @@ const SignupIndividual = () => {
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
                 </button>
               </div>
+              {errors.password && (
+                <p className="error-text">{errors.password}</p>
+              )}
             </div>
 
-            <div className="checkbox-group">
+            <div className="checkbox-group-ind1">
+              <label>
+                I have read the <a href="#">Terms and Conditions</a> and I agree
+                to it
+              </label>
               <input
                 type="checkbox"
                 name="termsAccepted"
                 checked={formData.termsAccepted}
                 onChange={handleChange}
               />
-              <label>
-                I have read the <a href="#">Terms and Conditions</a> and I agree to it
-              </label>
             </div>
+            {errors.termsAccepted && (
+              <p className="error-text">{errors.termsAccepted}</p>
+            )}
 
-            <button className="submit-btn" onClick={handleSubmit}>
-              Create Account
+            <button
+              className="submit-btn-ind"
+              style={{ background: "#603379" }}
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? "Creating Account..." : "Create Account"}
             </button>
 
-            <p className="login-text">
-              Already have an account? <a href="#">Log in</a>
+            <p className="login-text-ind">
+              Already have an account? <a href="/login">Log in</a>
             </p>
-          </div>
+          </form>
 
-          <div className="security-note">
-            <ShieldCheck size={16} color="#22c55e" />
+          <div className="security-note-ind">
+            <ShieldCheck size={14} color="#10B981" />
             <span>Secure and encrypted platform</span>
           </div>
         </div>
@@ -169,3 +258,4 @@ const SignupIndividual = () => {
 };
 
 export default SignupIndividual;
+// osi

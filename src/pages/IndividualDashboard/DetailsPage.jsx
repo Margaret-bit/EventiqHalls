@@ -151,9 +151,19 @@ const DetailsPage = () => {
 export default DetailsPage;
 
 const DetailContainer = styled.div`
-  max-width: 1200px;
+  width: 90%;
   margin: 0 auto;
   padding: 2rem;
+
+  @media (max-width: 768px) {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 1rem 0.5rem;
+  }
 `;
 
 const BackButton = styled.button`
@@ -171,6 +181,11 @@ const BackButton = styled.button`
   &:hover {
     gap: 1rem;
   }
+
+  @media (max-width: 768px) {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
 `;
 
 const ImageGallery = styled.div`
@@ -181,6 +196,20 @@ const ImageGallery = styled.div`
   margin-bottom: 2rem;
   border-radius: 0.75rem;
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    grid-template-rows: 250px 250px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 250px repeat(4, 150px);
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-rows: 200px repeat(4, 120px);
+  }
 `;
 
 const MainImage = styled.img`
@@ -189,6 +218,11 @@ const MainImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  @media (max-width: 768px) {
+    grid-column: 1;
+    grid-row: 1;
+  }
 `;
 
 const GalleryImage = styled.img`
@@ -201,18 +235,30 @@ const GalleryImage = styled.img`
   &:hover {
     transform: scale(1.05);
   }
+
+  @media (max-width: 768px) {
+    grid-column: 1;
+  }
 `;
 
 const ContentWrapper = styled.div`
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 2rem;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const MainContent = styled.div``;
 
 const VenueHeader = styled.div`
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const VenueName = styled.h1`
@@ -220,6 +266,14 @@ const VenueName = styled.h1`
   font-weight: 700;
   color: #1f2937;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.25rem;
+  }
 `;
 
 const VenueMetaInfo = styled.div`
@@ -228,6 +282,14 @@ const VenueMetaInfo = styled.div`
   gap: 2rem;
   margin-bottom: 1rem;
   flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.75rem;
+  }
 `;
 
 const MetaItem = styled.div`
@@ -236,10 +298,22 @@ const MetaItem = styled.div`
   gap: 0.5rem;
   color: #6b7280;
   font-size: 0.95rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const Section = styled.div`
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -247,12 +321,28 @@ const SectionTitle = styled.h2`
   font-weight: 700;
   color: #1f2937;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
 `;
 
 const SectionDescription = styled.p`
   color: #6b7280;
   line-height: 1.6;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
 `;
 
 const InfoGrid = styled.div`
@@ -260,12 +350,29 @@ const InfoGrid = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
 `;
 
 const InfoCard = styled.div`
   background-color: #f9fafb;
   padding: 1.5rem;
   border-radius: 0.5rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.875rem;
+  }
 `;
 
 const InfoLabel = styled.div`
@@ -275,18 +382,39 @@ const InfoLabel = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const InfoValue = styled.div`
   font-size: 1.1rem;
   font-weight: 600;
   color: #1f2937;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+  }
 `;
 
 const AmenitiesList = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
 `;
 
 const AmenityItem = styled.div`
@@ -295,12 +423,25 @@ const AmenityItem = styled.div`
   gap: 0.75rem;
   color: #6b7280;
   font-size: 0.95rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    gap: 0.5rem;
+  }
 `;
 
 const Sidebar = styled.div`
   position: sticky;
   top: 120px;
   height: fit-content;
+
+  @media (max-width: 1024px) {
+    position: static;
+  }
 `;
 
 const PricingCard = styled.div`
@@ -309,25 +450,53 @@ const PricingCard = styled.div`
   border-radius: 0.75rem;
   padding: 2rem;
   margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.25rem;
+  }
 `;
 
 const PriceDisplay = styled.div`
   margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+  }
 `;
 
 const PriceAmount = styled.div`
   font-size: 2rem;
   font-weight: 700;
   color: #6b46c1;
+
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const PriceLabel = styled.div`
   color: #6b7280;
   font-size: 0.9rem;
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
 `;
 
 const DateSelector = styled.div`
   margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+  }
 `;
 
 const DateLabel = styled.label`
@@ -336,6 +505,10 @@ const DateLabel = styled.label`
   font-weight: 600;
   color: #1f2937;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
 `;
 
 const DateInput = styled.input`
@@ -349,6 +522,11 @@ const DateInput = styled.input`
     outline: none;
     border-color: #6b46c1;
     box-shadow: 0 0 0 3px rgba(107, 70, 193, 0.1);
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.625rem;
+    font-size: 0.875rem;
   }
 `;
 
@@ -367,6 +545,11 @@ const BookButton = styled.button`
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(107, 70, 193, 0.3);
   }
+
+  @media (max-width: 480px) {
+    padding: 0.875rem;
+    font-size: 0.95rem;
+  }
 `;
 
 const PricingBreakdown = styled.div`
@@ -374,6 +557,14 @@ const PricingBreakdown = styled.div`
   padding: 1.5rem;
   border-radius: 0.5rem;
   margin-top: 1rem;
+
+  @media (max-width: 768px) {
+    padding: 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 const BreakdownItem = styled.div`
@@ -390,6 +581,10 @@ const BreakdownItem = styled.div`
     font-weight: 600;
     color: #1f2937;
   }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
 `;
 
 const CancellationPolicy = styled.div`
@@ -398,6 +593,10 @@ const CancellationPolicy = styled.div`
   padding: 1rem;
   border-radius: 0.5rem;
   margin-top: 1.5rem;
+
+  @media (max-width: 480px) {
+    padding: 0.875rem;
+  }
 `;
 
 const PolicyTitle = styled.div`
@@ -407,10 +606,18 @@ const PolicyTitle = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const PolicyText = styled.p`
   color: #b45309;
   font-size: 0.9rem;
   line-height: 1.5;
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
 `;

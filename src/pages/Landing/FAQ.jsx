@@ -73,9 +73,9 @@ const FaqIcon = styled.svg`
   height: 24px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  strokeWidth: 2;
+  strokeLinecap: round;
+  strokeLinejoinn: round;
   transition: transform 0.3s ease;
 
   ${({ $open }) =>
@@ -137,7 +137,7 @@ const Faq_header = styled.div`
     font-weight: 600;
     color: #1a1a1a;
     margin-bottom: 1rem;
-    margin-top: 30px;
+    margin-top: 50px;
   }
   p {
     font-size: 1rem;
@@ -158,4 +158,5 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  
 `;

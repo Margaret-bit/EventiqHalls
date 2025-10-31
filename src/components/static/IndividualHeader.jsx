@@ -71,6 +71,18 @@ const HeaderContainer = styled.header`
   position: sticky;
   top: 0;
   z-index: 100;
+
+  @media (max-width: 1024px) {
+    padding: 1rem 2rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.75rem 1rem;
+  }
 `;
 
 const HeaderContent = styled.div`
@@ -80,6 +92,14 @@ const HeaderContent = styled.div`
   align-items: center;
   height: 95px;
 
+  @media (max-width: 768px) {
+    height: 70px;
+  }
+
+  @media (max-width: 480px) {
+    height: 60px;
+  }
+
   .holder {
     width: 20%;
     height: 65px;
@@ -87,17 +107,42 @@ const HeaderContent = styled.div`
     justify-content: flex-start;
     flex-direction: column;
 
+    @media (max-width: 1024px) {
+      width: 25%;
+    }
+
+    @media (max-width: 768px) {
+      width: auto;
+      height: auto;
+    }
+
     h1 {
       margin: 0;
       font-weight: lighter;
       color: #603379;
       font-size: 2.2rem;
       font-family: "Yesteryear", cursive;
+
+      @media (max-width: 768px) {
+        font-size: 1.8rem;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 1.5rem;
+      }
     }
 
     p {
       margin: 0;
       font-size: 0.9rem;
+
+      @media (max-width: 768px) {
+        font-size: 0.75rem;
+      }
+
+      @media (max-width: 480px) {
+        display: none;
+      }
     }
   }
 `;
@@ -111,6 +156,22 @@ const SearchContainer = styled.div`
   background-color: #ececf080;
   border-radius: 0.5rem;
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    width: 400px;
+    margin: 0 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 300px;
+    margin: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    width: auto;
+    flex: 1;
+    margin: 0 0.75rem;
+  }
 `;
 
 const SearchIconHolder = styled.div`
@@ -120,6 +181,10 @@ const SearchIconHolder = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #ececf080;
+
+  @media (max-width: 480px) {
+    width: 35px;
+  }
 `;
 
 const SearchInput = styled.input`
@@ -130,6 +195,16 @@ const SearchInput = styled.input`
   outline: none;
   border: none;
   background: transparent;
+
+  @media (max-width: 768px) {
+    padding: 0.6rem 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem 0.4rem;
+    font-size: 0.8rem;
+  }
 `;
 
 const UserSection = styled.div`
@@ -141,6 +216,14 @@ const UserSection = styled.div`
 
   &:hover {
     background: #f0f0f0;
+  }
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.4rem;
   }
 
   .avatar {
@@ -155,6 +238,18 @@ const UserSection = styled.div`
     font-weight: 600;
     cursor: pointer;
     border: 2px solid #e0aa3d;
+
+    @media (max-width: 768px) {
+      width: 32px;
+      height: 32px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 480px) {
+      width: 28px;
+      height: 28px;
+      font-size: 0.85rem;
+    }
   }
 
   .profile-dropdown {
@@ -170,21 +265,44 @@ const UserSection = styled.div`
     z-index: 100;
     cursor: pointer;
 
+    @media (max-width: 768px) {
+      top: 50px;
+      width: 200px;
+    }
+
+    @media (max-width: 480px) {
+      top: 45px;
+      width: 180px;
+      right: -10px;
+    }
+
     .user-info {
       padding: 0 16px 10px;
       border-bottom: 1px solid #eee;
+
+      @media (max-width: 480px) {
+        padding: 0 12px 8px;
+      }
 
       h4 {
         font-size: 1.1rem;
         font-weight: 600;
         color: #000;
         margin-bottom: 4px;
+
+        @media (max-width: 480px) {
+          font-size: 1rem;
+        }
       }
 
       p {
         font-size: 0.9rem;
         color: #777;
         margin: 0;
+
+        @media (max-width: 480px) {
+          font-size: 0.8rem;
+        }
       }
     }
 
@@ -201,10 +319,19 @@ const UserSection = styled.div`
         cursor: pointer;
         transition: background 0.2s ease;
 
+        @media (max-width: 480px) {
+          padding: 8px 12px;
+          gap: 6px;
+        }
+
         .link {
           text-decoration: none;
           color: inherit;
           font-size: 0.9rem;
+
+          @media (max-width: 480px) {
+            font-size: 0.85rem;
+          }
         }
 
         &:hover {
@@ -216,10 +343,18 @@ const UserSection = styled.div`
           height: 16px;
           background: #5d3fd3;
           border-radius: 4px;
+
+          @media (max-width: 480px) {
+            height: 14px;
+          }
         }
 
         span {
           font-size: 0.9rem;
+
+          @media (max-width: 480px) {
+            font-size: 0.85rem;
+          }
         }
       }
 
@@ -229,8 +364,16 @@ const UserSection = styled.div`
         margin-top: 5px;
         padding-top: 10px;
 
+        @media (max-width: 480px) {
+          padding-top: 8px;
+        }
+
         .icon {
           font-size: 1rem;
+
+          @media (max-width: 480px) {
+            font-size: 0.9rem;
+          }
         }
 
         &:hover {
@@ -245,4 +388,12 @@ const UserName = styled.h3`
   font-size: 18px;
   font-weight: 500;
   color: #0a0a0a;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 `;

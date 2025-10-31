@@ -13,6 +13,9 @@ import { useNavigate } from "react-router-dom";
 import { LuUser } from "react-icons/lu";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+
+//josh
 
 const SignupIndividual = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -28,6 +31,10 @@ const SignupIndividual = () => {
 
   const navigate = useNavigate();
 
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> fef4d131fa4c1f27c5ebd9a2052fcc80b71c6b7a
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -43,8 +50,9 @@ const SignupIndividual = () => {
   };
 
   return (
-    <section className="signup-container">
-      <div className="left-section">
+    <div className="signup-container-ind">
+        <ToastContainer position="top-right" autoClose={3000} />
+      <div className="left-section2">
         <div
           className="bg-image2"
           style={{ backgroundImage: "url('src/assets/leftsideclient.png')" }}
@@ -57,8 +65,8 @@ const SignupIndividual = () => {
           <ArrowLeft size={20} />
         </button>
 
-        <div className="left-content">
-          <div className="badge">FOR INDIVIDUALS</div>
+        <div className="left-content2">
+          <div className="badge2">FOR CLIENTS</div>
           <h1>
             Book Spaces <br /> You'll Love.
           </h1>
@@ -69,11 +77,13 @@ const SignupIndividual = () => {
         </div>
       </div>
 
-      <section className="right-section">
-        <div className="form-wrapper">
-          <div className="form-header">
-            <div className="user-icon">
-              <User size={20} color="purple" />
+      <div className="right-section2">
+        <div className="form-wrapper2">
+             <div className="form-header2">
+            <LuUser className="user-icon2" size={30} />
+            <div className="form-header-text2">
+              <h2>Client </h2>
+              <p className="form-subtitle2">Create your account to get started</p>
             </div>
           </div>
 
@@ -150,17 +160,18 @@ const SignupIndividual = () => {
               )}
             </div>
 
-            <div className="checkbox-group">
-              <input
+            <div className="checkbox-group-ind1">
+           
+              <label>
+                I have read the <a href="#">Terms and Conditions</a> and I agree
+                to it
+              </label>
+                 <input
                 type="checkbox"
                 name="termsAccepted"
                 checked={formData.termsAccepted}
                 onChange={handleChange}
               />
-              <label>
-                I have read the <a href="#">Terms and Conditions</a> and I agree
-                to it
-              </label>
             </div>
             {errors.termsAccepted && (
               <p className="error-text">{errors.termsAccepted}</p>
@@ -185,9 +196,11 @@ const SignupIndividual = () => {
             <span>Secure and encrypted platform</span>
           </div>
         </div>
-      </section>
-      <ToastContainer />
-    </section>
+        
+
+        </div>
+    </div>
+    
   );
 };
 

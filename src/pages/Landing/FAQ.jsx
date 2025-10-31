@@ -73,9 +73,9 @@ const FaqIcon = styled.svg`
   height: 24px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  strokeWidth: 2;
+  strokeLinecap: round;
+  strokeLinejoinn: round;
   transition: transform 0.3s ease;
 
   ${({ $open }) =>

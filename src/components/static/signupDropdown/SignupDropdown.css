@@ -2,12 +2,10 @@
   position: relative;
 }
 
-/* Sign Up Button */
 .sign-up-btn {
   display: flex;
   align-items: center;
   padding: 0.75rem 1.5rem;
-  /* background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); */
   background-color: #603379;
   color: white;
   border: none;
@@ -15,22 +13,18 @@
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.3);
+  transition: all 0.3s;
 }
 
 .sign-up-btn:hover {
-  /* background: linear-gradient(135deg, #6d28d9 0%, #9333ea 100%); */
   background-color: #603379;
-  box-shadow: 0 6px 8px -1px rgba(124, 58, 237, 0.4);
-  transform: translateY(-1px);
+  transform: scale(1.05);
 }
 
 .sign-up-btn:active {
   transform: translateY(0);
 }
 
-/* Chevron Icon */
 .chevron-icon {
   margin-left: 0.5rem;
   width: 1rem;
@@ -42,7 +36,6 @@
   transform: rotate(180deg);
 }
 
-/* Dropdown Menu */
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -58,7 +51,6 @@
   animation: fadeIn 0.2s ease-out;
 }
 
-/* Dropdown Items */
 .dropdown-item {
   width: 100%;
   display: flex;
@@ -80,7 +72,6 @@
   border-bottom: 1px solid #f3f4f6;
 }
 
-/* Dropdown Icons */
 .dropdown-icon {
   width: 1.25rem;
   height: 1.25rem;
@@ -92,7 +83,6 @@
   color: #d97706;
 }
 
-/* Dropdown Text */
 .dropdown-text {
   color: #1f2937;
   font-weight: 500;

@@ -1,9 +1,13 @@
-
-
-
-
-import { useState } from "react";
-import axios from "axios";
+import { useState, useEffect, useRef } from "react";
+import {
+  User,
+  Mail,
+  Lock,
+  Eye,
+  EyeOff,
+  ShieldCheck,
+  ArrowLeft,
+} from "lucide-react";
 import "./SignupIndividual.css";
 import { useNavigate } from "react-router-dom";
 import { User, Mail, Lock, Eye, EyeOff, ShieldCheck } from "lucide-react";
@@ -16,7 +20,7 @@ const SignupIndividual = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
+
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -25,6 +29,7 @@ const SignupIndividual = () => {
     password: "",
     termsAccepted: false,
   });
+  const navigate = useNavigate();
 
   // Handle form input
   const handleChange = (e) => {
@@ -35,94 +40,13 @@ const SignupIndividual = () => {
     }));
   };
 
-  // Validate inputs
-  // const validateForm = () => {
-  //   const newErrors = {};
-
-  //   if (!formData.firstName.trim()) newErrors.firstName = "First name is required";
-  //   if (!formData.surname.trim()) newErrors.surname = "Surname is required";
-  //   if (!formData.email.trim()) newErrors.email = "Email is required";
-  //   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
-  //     newErrors.email = "Invalid email format";
-  //   if (!formData.password.trim()) newErrors.password = "Password is required";
-  //   else if (formData.password.length < 8)
-  //     newErrors.password = "Password must be at least 8 characters";
-  //   if (!formData.termsAccepted)
-  //     newErrors.termsAccepted = "You must accept the terms";
-
-  //   setErrors(newErrors);
-  //   return Object.keys(newErrors).length === 0;
-  // };
-
-  const validateForm = () => {
-  if (!formData.firstName.trim()) {
-    toast.error("First name is required");
-    return false;
-  }
-
-  if (!formData.surname.trim()) {
-    toast.error("Surname is required");
-    return false;
-  }
-
-  if (!formData.email.trim()) {
-    toast.error("Email is required");
-    return false;
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-    toast.error("Invalid email format");
-    return false;
-  }
-
-  if (!formData.password.trim()) {
-    toast.error("Password is required");
-    return false;
-  } else if (formData.password.length < 8) {
-    toast.error("Password must be at least 8 characters");
-    return false;
-  }
-
-  if (!formData.termsAccepted) {
-    toast.error("You must accept the terms and conditions");
-    return false;
-  }
-
-  return true; 
-};
-
-
-  // Handle submit with Axios
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-
-    setLoading(true);
-
-try {
-  const response = await axios.post(
-    "https://eventiq-final-project.onrender.com/api/v1/venueOwner",
-    formData
-  );
-
-  console.log("Signup successful:", response.data);
-  toast.success("Account created successfully! 🎉");
-  setTimeout(() => navigate("/dashboardHome"), 2000); // slight delay to show toast
-} catch (error) {
-  console.error("Signup failed:", error);
-  if (error.response) {
-    toast.error(error.response.data.message || "Signup failed. Please try again.");
-  } else {
-    toast.error("Network error. Please check your internet connection.");
-  }
-} finally {
-    setLoading(false);
-  }
-
+  const handleSubmit = () => {
+    console.log("Account created:", formData);
   };
 
   return (
-    <section className="signup-container-ind">
-       <ToastContainer position="top-right" autoClose={3000} />
-      <div className="left-section2">
+    <section className="signup-container">
+      <div className="left-section">
         <div
           className="bg-image2"
           style={{ backgroundImage: "url('src/assets/leftsideclient.png')" }}
@@ -134,24 +58,23 @@ try {
           </svg>
         </button>
 
-        <div className="left-content2">
-          <div className="badge2">CLIENTS</div>
+        <div className="left-content">
+          <div className="badge">FOR INDIVIDUALS</div>
           <h1>
             Book Spaces <br /> You'll Love.
           </h1>
-          <p>Find and book the perfect hall and services for your next event, fast and easy.
+          <p>
+            Find and book the perfect hall and services for your next event,
+            fast and easy.
           </p>
         </div>
       </div>
 
-      <section className="right-section2">
-        <div className="form-wrapper2" >
-          
-          <div className="form-header2">
-            <LuUser className="user-icon2" size={40} />
-            <div className="form-header-text2">
-              <h2>CLIENT </h2>
-              <p className="form-subtitle2">Create your account to get started</p>
+      <section className="right-section">
+        <div className="form-wrapper">
+          <div className="form-header">
+            <div className="user-icon">
+              <User size={20} color="purple" />
             </div>
           </div>
 
@@ -219,20 +142,17 @@ try {
               {errors.password && <p className="error-text">{errors.password}</p>}
             </div>
 
-            <div className="checkbox-group-ind1">
+            <div className="checkbox-group">
+              <input
+                type="checkbox"
+                name="termsAccepted"
+                checked={formData.termsAccepted}
+                onChange={handleChange}
+              />
               <label>
-              
-                I have read the <a href="#" style={{color:"#603379"}}><strong>Terms and Conditions</strong></a> and I agree to it
-                   </label>
-                  <input
-                  
-                  type="checkbox"
-                  name="termsAccepted"
-                  checked={formData.termsAccepted}
-                  onChange={handleChange}
-                />{" "}
-             
-            
+                I have read the <a href="#">Terms and Conditions</a> and I agree
+                to it
+              </label>
             </div>
               {errors.termsAccepted && (
                 <p className="error-text">{errors.termsAccepted}</p>
@@ -256,11 +176,7 @@ try {
           </div>
           
         </div>
-        
-
-      </section>
-      
-    </section>
+  </section>
     
   );
 };

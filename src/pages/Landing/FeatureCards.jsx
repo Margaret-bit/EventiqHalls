@@ -81,7 +81,7 @@ const Line = styled.div`
   font-weight: lighter;
   font-size: 7rem;
   margin-bottom: 0.5rem;
-`;
+`
 const Card = styled.div`
   display: flex;
   flex-direction: column;

@@ -15,8 +15,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
-//josh
-
 const SignupIndividual = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -48,10 +46,14 @@ const SignupIndividual = () => {
   return (
     <div className="signup-container-ind">
       <ToastContainer position="top-right" autoClose={3000} />
+
       <div className="left-section2">
         <div
           className="bg-image2"
-          style={{ backgroundImage: "url('src/assets/leftsideclient.png')" }}
+          style={{
+            backgroundImage:
+              "url('https://res.cloudinary.com/dyhtn8gdo/image/upload/v1761925103/leftsidelogin_tw7lbh.png')",
+          }}
         ></div>
 
         <button
@@ -75,6 +77,18 @@ const SignupIndividual = () => {
 
       <div className="right-section2">
         <div className="form-wrapper2">
+          {/* Mobile-only back button */}
+          <button
+            className="mobile-back-btn"
+            onClick={() => navigate("/", { replace: true })}
+          >
+            <ArrowLeft size={18} />
+            <span>Back</span>
+          </button>
+
+          {/* Mobile-only badge */}
+          <div className="mobile-badge">FOR CLIENTS</div>
+
           <div className="form-header2">
             <LuUser className="user-icon2" size={30} />
             <div className="form-header-text2">
@@ -199,4 +213,3 @@ const SignupIndividual = () => {
 };
 
 export default SignupIndividual;
-// osi

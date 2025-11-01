@@ -15,8 +15,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
-//josh
-
 const SignupIndividual = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -40,40 +38,39 @@ const SignupIndividual = () => {
   };
 
   const validateForm = () => {
-  if (!formData.firstName.trim()) {
-    toast.error("First name is required");
-    return false;
-  }
+    if (!formData.firstName.trim()) {
+      toast.error("First name is required");
+      return false;
+    }
 
-  if (!formData.surname.trim()) {
-    toast.error("Surname is required");
-    return false;
-  }
+    if (!formData.surname.trim()) {
+      toast.error("Surname is required");
+      return false;
+    }
 
-  if (!formData.email.trim()) {
-    toast.error("Email is required");
-    return false;
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-    toast.error("Invalid email format");
-    return false;
-  }
+    if (!formData.email.trim()) {
+      toast.error("Email is required");
+      return false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      toast.error("Invalid email format");
+      return false;
+    }
 
-  if (!formData.password.trim()) {
-    toast.error("Password is required");
-    return false;
-  } else if (formData.password.length < 8) {
-    toast.error("Password must be at least 8 characters");
-    return false;
-  }
+    if (!formData.password.trim()) {
+      toast.error("Password is required");
+      return false;
+    } else if (formData.password.length < 8) {
+      toast.error("Password must be at least 8 characters");
+      return false;
+    }
 
-  if (!formData.termsAccepted) {
-    toast.error("You must accept the terms and conditions");
-    return false;
-  }
+    if (!formData.termsAccepted) {
+      toast.error("You must accept the terms and conditions");
+      return false;
+    }
 
-  return true; 
-};
-
+    return true;
+  };
 
   // Handle submit with Axios
   const handleSubmit = async (e) => {
@@ -82,35 +79,40 @@ const SignupIndividual = () => {
 
     setLoading(true);
 
-try {
-  const response = await axios.post(
-    "https://eventiq-final-project.onrender.com/api/v1/register-client",
-    formData
-  );
+    try {
+      const response = await axios.post(
+        "https://eventiq-final-project.onrender.com/api/v1/register-client",
+        formData
+      );
 
-  console.log("Signup successful:", response.data);
-  toast.success("Account created successfully! 🎉");
-  setTimeout(() => navigate("/dashboardHome"), 2000); // slight delay to show toast
-} catch (error) {
-  console.error("Signup failed:", error);
-  if (error.response) {
-    toast.error(error.response.data.message || "Signup failed. Please try again.");
-  } else {
-    toast.error("Network error. Please check your internet connection.");
-  }
-} finally {
-    setLoading(false);
-  }
-
+      console.log("Signup successful:", response.data);
+      toast.success("Account created successfully! 🎉");
+      setTimeout(() => navigate("/dashboardHome"), 2000); // slight delay to show toast
+    } catch (error) {
+      console.error("Signup failed:", error);
+      if (error.response) {
+        toast.error(
+          error.response.data.message || "Signup failed. Please try again."
+        );
+      } else {
+        toast.error("Network error. Please check your internet connection.");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="signup-container-ind">
       <ToastContainer position="top-right" autoClose={3000} />
+
       <div className="left-section2">
         <div
           className="bg-image2"
-          style={{ backgroundImage: "url('https://res.cloudinary.com/depuy7bkr/image/upload/v1761918819/left_side_client_eventiQ2_z4aumq.png')" }}
+          style={{
+            backgroundImage:
+              "url('https://res.cloudinary.com/depuy7bkr/image/upload/v1761918819/left_side_client_eventiQ2_z4aumq.png')",
+          }}
         ></div>
 
         <button
@@ -134,6 +136,17 @@ try {
 
       <div className="right-section2">
         <div className="form-wrapper2">
+          <button
+            className="mobile-back-btn"
+            onClick={() => navigate("/", { replace: true })}
+          >
+            <ArrowLeft size={18} />
+            <span>Back</span>
+          </button>
+
+          {/* Mobile-only badge */}
+          <div className="mobile-badge">FOR CLIENTS</div>
+
           <div className="form-header2">
             <LuUser className="user-icon2" size={30} />
             <div className="form-header-text2">
@@ -258,4 +271,3 @@ try {
 };
 
 export default SignupIndividual;
-// osi

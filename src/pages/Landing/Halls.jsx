@@ -135,7 +135,6 @@ const Hall_rating = styled.div`
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  /* background-color: #fef3c7; */
   padding: 0.15rem 0.8rem;
   border-radius: 0.375rem;
 `;
@@ -174,18 +173,18 @@ const Wrapper = styled.div`
   z-index: 5;
 `;
 const Image_holder = styled.div`
-position: relative;
- width: 290px;
+  position: relative;
+  width: 290px;
   height: 290px;
   overflow: hidden;
   border-radius: 14px;
-  
+
   img {
     width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.9s;
-  border-radius: 14px;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.9s;
+    border-radius: 14px;
   }
   &:hover img {
     transform: scale(1.05);

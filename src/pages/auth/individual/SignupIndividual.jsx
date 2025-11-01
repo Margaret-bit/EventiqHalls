@@ -37,10 +37,69 @@ const SignupIndividual = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const validateForm = () => {
+    if (!formData.firstName.trim()) {
+      toast.error("First name is required");
+      return false;
+    }
+
+    if (!formData.surname.trim()) {
+      toast.error("Surname is required");
+      return false;
+    }
+
+    if (!formData.email.trim()) {
+      toast.error("Email is required");
+      return false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      toast.error("Invalid email format");
+      return false;
+    }
+
+    if (!formData.password.trim()) {
+      toast.error("Password is required");
+      return false;
+    } else if (formData.password.length < 8) {
+      toast.error("Password must be at least 8 characters");
+      return false;
+    }
+
+    if (!formData.termsAccepted) {
+      toast.error("You must accept the terms and conditions");
+      return false;
+    }
+
+    return true;
+  };
+
+  // Handle submit with Axios
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Account created:", formData);
-    toast.success("Account created successfully!");
+    if (!validateForm()) return;
+
+    setLoading(true);
+
+    try {
+      const response = await axios.post(
+        "https://eventiq-final-project.onrender.com/api/v1/register-client",
+        formData
+      );
+
+      console.log("Signup successful:", response.data);
+      toast.success("Account created successfully! 🎉");
+      setTimeout(() => navigate("/dashboardHome"), 2000); // slight delay to show toast
+    } catch (error) {
+      console.error("Signup failed:", error);
+      if (error.response) {
+        toast.error(
+          error.response.data.message || "Signup failed. Please try again."
+        );
+      } else {
+        toast.error("Network error. Please check your internet connection.");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -52,7 +111,7 @@ const SignupIndividual = () => {
           className="bg-image2"
           style={{
             backgroundImage:
-              "url('https://res.cloudinary.com/dyhtn8gdo/image/upload/v1761925103/leftsidelogin_tw7lbh.png')",
+              "url('https://res.cloudinary.com/depuy7bkr/image/upload/v1761918819/left_side_client_eventiQ2_z4aumq.png')",
           }}
         ></div>
 
@@ -77,7 +136,6 @@ const SignupIndividual = () => {
 
       <div className="right-section2">
         <div className="form-wrapper2">
-          {/* Mobile-only back button */}
           <button
             className="mobile-back-btn"
             onClick={() => navigate("/", { replace: true })}

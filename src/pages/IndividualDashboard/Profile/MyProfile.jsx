@@ -6,15 +6,15 @@ import { FiSettings } from "react-icons/fi";
 import { Outlet, useNavigate } from "react-router-dom";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const MyProfile = () => {
   const [show, setShow] = useState("bookings");
   const navigate = useNavigate();
 
-  const handleNavigation = (section) => {
-    setShow(section);
-    navigate(section);
-  };
+  useEffect(() => {
+    navigate("/individual-dashboard/MyProfile/bookings");
+  }, [navigate]);
 
   return (
     <Holder>
@@ -47,13 +47,15 @@ const MyProfile = () => {
           </div>
         </article>
       </div>
+
       <div className="dier">
         <div className="tabs">
           <div
             className={show === "bookings" ? "tab active" : "tab"}
-            onClick={() =>
-              handleNavigation("/individual-dashboard/MyProfile/bookings")
-            }
+            onClick={() => {
+              setShow("bookings");
+              navigate("/individual-dashboard/MyProfile/bookings");
+            }}
           >
             <AiOutlineTable className="icon" />
             <span>Bookings</span>
@@ -61,9 +63,10 @@ const MyProfile = () => {
 
           <div
             className={show === "notifications" ? "tab active" : "tab"}
-            onClick={() =>
-              handleNavigation("/individual-dashboard/MyProfile/notifications")
-            }
+            onClick={() => {
+              setShow("notifications");
+              navigate("/individual-dashboard/MyProfile/notifications");
+            }}
           >
             <IoNotificationsOutline className="icon" />
             <span>Notifications</span>
@@ -71,9 +74,10 @@ const MyProfile = () => {
 
           <div
             className={show === "settings" ? "tab active" : "tab"}
-            onClick={() =>
-              handleNavigation("/individual-dashboard/MyProfile/settings")
-            }
+            onClick={() => {
+              setShow("settings");
+              navigate("/individual-dashboard/MyProfile/settings");
+            }}
           >
             <FiSettings className="icon" />
             <span>Settings</span>
@@ -87,7 +91,7 @@ const MyProfile = () => {
 };
 
 export default MyProfile;
-// the styled component
+
 const Holder = styled.div`
   width: 100%;
   height: 110vh;

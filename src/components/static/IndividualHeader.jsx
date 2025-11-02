@@ -66,13 +66,24 @@ export default Individual_header;
 
 const HeaderContainer = styled.header`
   background-color: #ffffff;
-  padding: 1rem 4rem;
+  padding: 0.1rem 4rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
 
   @media (max-width: 1024px) {
+<<<<<<< HEAD
+    padding: 0.5rem 2rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem 1rem;
+=======
     padding: 1rem 2rem;
   }
 
@@ -82,6 +93,7 @@ const HeaderContainer = styled.header`
 
   @media (max-width: 480px) {
     padding: 0.75rem 1rem;
+>>>>>>> faadeeabbd4ee54e5eb2d3520c6d0865fccd8036
   }
 `;
 
@@ -101,8 +113,8 @@ const HeaderContent = styled.div`
   }
 
   .holder {
-    width: 20%;
-    height: 65px;
+    width: 25%;
+    height: auto;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -135,6 +147,84 @@ const HeaderContent = styled.div`
     p {
       margin: 0;
       font-size: 0.9rem;
+<<<<<<< HEAD
+      color: #444;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .holder {
+      h1 {
+        font-size: 1.8rem;
+      }
+      p {
+        font-size: 0.85rem;
+      }
+      small {
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+    align-items: flex-start;
+    gap: 1rem;
+
+    .holder {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      text-align: left;
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 0.85rem;
+      }
+
+      small {
+        font-size: 0.75rem;
+      }
+    }
+
+    div:last-child {
+      position: absolute;
+      right: 1.5rem;
+      top: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.8rem;
+
+    .holder {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 0.8rem;
+      }
+
+      small {
+        font-size: 0.7rem;
+      }
+    }
+
+    div:last-child {
+      top: 0.8rem;
+      right: 1rem;
+=======
 
       @media (max-width: 768px) {
         font-size: 0.75rem;
@@ -143,6 +233,7 @@ const HeaderContent = styled.div`
       @media (max-width: 480px) {
         display: none;
       }
+>>>>>>> faadeeabbd4ee54e5eb2d3520c6d0865fccd8036
     }
   }
 `;
@@ -159,6 +250,19 @@ const SearchContainer = styled.div`
 
   @media (max-width: 1024px) {
     width: 400px;
+<<<<<<< HEAD
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 0;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    margin: 0;
+    border-radius: 8px;
+=======
     margin: 0 1.5rem;
   }
 
@@ -171,6 +275,7 @@ const SearchContainer = styled.div`
     width: auto;
     flex: 1;
     margin: 0 0.75rem;
+>>>>>>> faadeeabbd4ee54e5eb2d3520c6d0865fccd8036
   }
 `;
 
@@ -196,6 +301,11 @@ const SearchInput = styled.input`
   border: none;
   background: transparent;
 
+<<<<<<< HEAD
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.4rem;
+=======
   @media (max-width: 768px) {
     padding: 0.6rem 0.5rem;
     font-size: 0.875rem;
@@ -204,6 +314,7 @@ const SearchInput = styled.input`
   @media (max-width: 480px) {
     padding: 0.5rem 0.4rem;
     font-size: 0.8rem;
+>>>>>>> faadeeabbd4ee54e5eb2d3520c6d0865fccd8036
   }
 `;
 
@@ -382,6 +493,49 @@ const UserSection = styled.div`
       }
     }
   }
+
+  @media (max-width: 768px) {
+    align-self: flex-end;
+    gap: 0.5rem;
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      font-size: 0.9rem;
+    }
+
+    .profile-dropdown {
+      top: 50px;
+      width: 200px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.4rem;
+
+    .avatar {
+      width: 30px;
+      height: 30px;
+      font-size: 0.8rem;
+    }
+
+    .profile-dropdown {
+      top: 45px;
+      width: 180px;
+
+      .user-info h4 {
+        font-size: 1rem;
+      }
+
+      .user-info p {
+        font-size: 0.8rem;
+      }
+
+      .menu-item span {
+        font-size: 0.8rem;
+      }
+    }
+  }
 `;
 
 const UserName = styled.h3`
@@ -394,6 +548,10 @@ const UserName = styled.h3`
   }
 
   @media (max-width: 480px) {
+<<<<<<< HEAD
+    font-size: 1rem;
+=======
     font-size: 14px;
+>>>>>>> faadeeabbd4ee54e5eb2d3520c6d0865fccd8036
   }
 `;

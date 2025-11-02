@@ -18,8 +18,6 @@ import axios from "axios";
 import VerificationModal from "../../../components/static/VerificationModal/VerificationModal";
 
 
-//josh
-
 const SignupIndividual = () => {
   const [isVerificationOpen, setIsVerificationOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -44,40 +42,39 @@ const SignupIndividual = () => {
   };
 
   const validateForm = () => {
-  if (!formData.firstName.trim()) {
-    toast.error("First name is required");
-    return false;
-  }
+    if (!formData.firstName.trim()) {
+      toast.error("First name is required");
+      return false;
+    }
 
-  if (!formData.surname.trim()) {
-    toast.error("Surname is required");
-    return false;
-  }
+    if (!formData.surname.trim()) {
+      toast.error("Surname is required");
+      return false;
+    }
 
-  if (!formData.email.trim()) {
-    toast.error("Email is required");
-    return false;
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-    toast.error("Invalid email format");
-    return false;
-  }
+    if (!formData.email.trim()) {
+      toast.error("Email is required");
+      return false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      toast.error("Invalid email format");
+      return false;
+    }
 
-  if (!formData.password.trim()) {
-    toast.error("Password is required");
-    return false;
-  } else if (formData.password.length < 8) {
-    toast.error("Password must be at least 8 characters");
-    return false;
-  }
+    if (!formData.password.trim()) {
+      toast.error("Password is required");
+      return false;
+    } else if (formData.password.length < 8) {
+      toast.error("Password must be at least 8 characters");
+      return false;
+    }
 
-  if (!formData.termsAccepted) {
-    toast.error("You must accept the terms and conditions");
-    return false;
-  }
+    if (!formData.termsAccepted) {
+      toast.error("You must accept the terms and conditions");
+      return false;
+    }
 
-  return true; 
-};
-
+    return true;
+  };
 
 //   // Handle submit with Axios
 //   const handleSubmit = async (e) => {
@@ -138,7 +135,7 @@ try {
     setLoading(false);
   }
 
-  };
+     
 
 
   return (
@@ -150,7 +147,10 @@ try {
       <div className="left-section2">
         <div
           className="bg-image2"
-          style={{ backgroundImage: "url('https://res.cloudinary.com/depuy7bkr/image/upload/v1761918819/left_side_client_eventiQ2_z4aumq.png')" }}
+          style={{
+            backgroundImage:
+              "url('https://res.cloudinary.com/depuy7bkr/image/upload/v1761918819/left_side_client_eventiQ2_z4aumq.png')",
+          }}
         ></div>
 
         <button
@@ -174,6 +174,17 @@ try {
 
       <div className="right-section2">
         <div className="form-wrapper2">
+          <button
+            className="mobile-back-btn"
+            onClick={() => navigate("/", { replace: true })}
+          >
+            <ArrowLeft size={18} />
+            <span>Back</span>
+          </button>
+
+          {/* Mobile-only badge */}
+          <div className="mobile-badge">FOR CLIENTS</div>
+
           <div className="form-header2">
             <LuUser className="user-icon2" size={30} />
             <div className="form-header-text2">
@@ -297,8 +308,8 @@ try {
         </div>
       </div>
     </div>
+    
   );
 };
-
+ }
 export default SignupIndividual;
-// osi

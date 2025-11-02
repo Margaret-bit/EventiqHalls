@@ -10,14 +10,18 @@ import {
 } from "lucide-react";
 import "./SignupIndividual.css";
 import { useNavigate } from "react-router-dom";
+import {Link} from "react-router-dom";
 import { LuUser } from "react-icons/lu";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import VerificationModal from "../../../components/static/VerificationModal/VerificationModal";
+
 
 //josh
 
 const SignupIndividual = () => {
+  const [isVerificationOpen, setIsVerificationOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -75,7 +79,36 @@ const SignupIndividual = () => {
 };
 
 
-  // Handle submit with Axios
+//   // Handle submit with Axios
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     if (!validateForm()) return;
+
+//     setLoading(true);
+
+// try {
+//   const response = await axios.post(
+//     "https://eventiq-final-project.onrender.com/api/v1/register-client",
+//     formData
+//   );
+
+//   console.log("Signup successful:", response.data);
+//   toast.success("Account created successfully! 🎉");
+//   setTimeout(() => navigate("/dashboardHome"), 2000); // slight delay to show toast
+// } catch (error) {
+//   console.error("Signup failed:", error);
+//   if (error.response) {
+//     toast.error(error.response.data.message || "Signup failed. Please try again.");
+//   } else {
+//     toast.error("Network error. Please check your internet connection.");
+//   }
+// } finally {
+//     setLoading(false);
+//   }
+
+//   };
+
+// Handle submit with Axios
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -89,8 +122,11 @@ try {
   );
 
   console.log("Signup successful:", response.data);
-  toast.success("Account created successfully! 🎉");
-  setTimeout(() => navigate("/dashboardHome"), 2000); // slight delay to show toast
+  localStorage.setItem("signupEmail", response.data.email);
+    localStorage.setItem("userRole", response.data.role);
+ 
+  // setTimeout(() => navigate("/dashboardHome"), 2000); 
+  setIsVerificationOpen(true);
 } catch (error) {
   console.error("Signup failed:", error);
   if (error.response) {
@@ -104,9 +140,13 @@ try {
 
   };
 
+
   return (
     <div className="signup-container-ind">
-      <ToastContainer position="top-right" autoClose={3000} />
+             <ToastContainer position="top-right" autoClose={3000} />
+             {isVerificationOpen && (
+        <VerificationModal onClose={() => setIsVerificationOpen(false)} email={formData.email} />
+      )}
       <div className="left-section2">
         <div
           className="bg-image2"
@@ -242,9 +282,12 @@ try {
               {loading ? "Creating Account..." : "Create Account"}
             </button>
 
-            <p className="login-text-ind">
+            {/* <p className="login-text-ind">
               Already have an account? <a href="/login">Log in</a>
-            </p>
+            </p> */}
+                        <p className="login-text-client">
+  Already have an account? <Link to="/login">Log in</Link>
+</p>
           </form>
 
           <div className="security-note-ind">

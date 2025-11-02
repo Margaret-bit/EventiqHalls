@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import "./HallOwnerSignUp.css";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { User, Mail, Lock, Eye, EyeOff, ShieldCheck } from "lucide-react";
 import { LuUser } from "react-icons/lu";
 import { ToastContainer, toast } from "react-toastify";
@@ -87,7 +88,11 @@ try {
   );
 
   console.log("Signup successful:", response.data);
-  toast.success("Account created successfully! 🎉");
+  localStorage.setItem("signupEmail", response.data.data.email);
+    localStorage.setItem("userRole", response.data.data.role);
+
+
+  
   // setTimeout(() => navigate("/dashboardHome"), 2000); 
   setIsVerificationOpen(true);
 } catch (error) {
@@ -234,9 +239,10 @@ try {
 
             
 
+         
             <p className="login-text-client">
-              Already have an account? <a href="/login">Log in</a>
-            </p>
+  Already have an account? <Link to="/login">Log in</Link>
+</p>
           </form>
 
           <div className="security-note-client">

@@ -1,29 +1,75 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { venuesData } from "../../data/venuesData";
+import axios from "axios";
 import VenueCard from "../../components/VenueCard";
 
 const Multipurpose = () => {
-  const selectedVenues = venuesData.filter(
-    (venue) =>
-      venue.name === "Skyline Rooftop Venue" ||
-      venue.name === "Imperial Marquee Hall" ||
-      venue.name === "Crystal Ballroom"
-  );
-  return (
-    <div>
+  const [venues, setVenues] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchMultipurposeVenues = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        // Fetch all venues from your API
+        const response = await axios.get(
+          "https://eventiq-final-project.onrender.com/venues"
+        );
+
+        // Filter multipurpose halls (adjust key name if your API uses something else)
+        const multipurposeVenues = response.data.filter(
+          (venue) =>
+            venue.category?.toLowerCase() === "multipurpose" ||
+            venue.type?.toLowerCase() === "multipurpose"
+        );
+
+        setVenues(multipurposeVenues);
+      } catch (err) {
+        console.error("❌ Error fetching multipurpose venues:", err);
+        setError("Failed to load multipurpose venues. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMultipurposeVenues();
+  }, []);
+
+  if (loading) {
+    return (
       <MulHolder>
-        <MulHeader>
-          <PageTitle>Event Indoor Halls in Lagos</PageTitle>
-          <PageSubtitle>{selectedVenues.length} venues available</PageSubtitle>
-        </MulHeader>
-        <IndoorGrid>
-          {selectedVenues.map((venue) => (
-            <VenueCard key={venue.id} venue={venue} />
-          ))}
-        </IndoorGrid>
+        <PageTitle>Loading Multipurpose Venues...</PageTitle>
       </MulHolder>
-    </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <MulHolder>
+        <PageTitle>Error</PageTitle>
+        <PageSubtitle>{error}</PageSubtitle>
+      </MulHolder>
+    );
+  }
+
+  return (
+    <MulHolder>
+      <MulHeader>
+        <PageTitle>Multipurpose Event Halls in Lagos</PageTitle>
+        <PageSubtitle>{venues.length} venues available</PageSubtitle>
+      </MulHeader>
+
+      <IndoorGrid>
+        {venues.length > 0 ? (
+          venues.map((venue) => <VenueCard key={venue.id} venue={venue} />)
+        ) : (
+          <PageSubtitle>No multipurpose venues found</PageSubtitle>
+        )}
+      </IndoorGrid>
+    </MulHolder>
   );
 };
 
@@ -55,34 +101,14 @@ const PageTitle = styled.h1`
   color: #0a0a0a;
   font-family: "Poppins";
   font-size: 30px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 30px;
   margin-bottom: 0.5rem;
-
-  @media (max-width: 768px) {
-    font-size: 24px;
-    line-height: 28px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 20px;
-    line-height: 24px;
-  }
 `;
 
 const PageSubtitle = styled.p`
   color: #717182;
   font-family: "Poppins";
   font-size: 1.2rem;
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 0.9rem;
-  }
 `;
 
 const IndoorGrid = styled.div`

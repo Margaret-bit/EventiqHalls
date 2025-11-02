@@ -1,18 +1,72 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { venuesData } from "../../data/venuesData";
+import axios from "axios";
 import VenueCard from "../../components/VenueCard";
 
 const All_venues = () => {
+  const [venues, setVenues] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Fetch venues when the component mounts
+    const fetchVenues = async () => {
+      try {
+        setLoading(true); // start loading
+        setError(null); // clear any previous error
+
+        const response = await axios.get(
+          "https://eventiq-final-project.onrender.com/venues"
+        );
+
+        // Assuming the API returns an array of venues
+        setVenues(response.data);
+      } catch (err) {
+        console.error("❌ Error fetching venues:", err);
+        setError(
+          "Failed to load venues. Please check your network or try again later."
+        );
+      } finally {
+        setLoading(false); // stop loading in all cases
+      }
+    };
+
+    fetchVenues();
+  }, []);
+
+  // 🌀 Loading state
+  if (loading) {
+    return (
+      <PageContainer>
+        <PageTitle>Loading Venues...</PageTitle>
+      </PageContainer>
+    );
+  }
+
+  // ⚠ Error state
+  if (error) {
+    return (
+      <PageContainer>
+        <PageTitle>Error</PageTitle>
+        <PageSubtitle>{error}</PageSubtitle>
+      </PageContainer>
+    );
+  }
+
+  // ✅ Success state
   return (
     <PageContainer>
       <PageHeader>
         <PageTitle>Event Venues in Lagos</PageTitle>
-        <PageSubtitle>{venuesData.length} venues available</PageSubtitle>
+        <PageSubtitle>{venues.length} venues available</PageSubtitle>
       </PageHeader>
+
       <VenuesGrid>
-        {venuesData.map((venue) => (
-          <VenueCard key={venue.id} venue={venue} />
-        ))}
+        {venues.length > 0 ? (
+          venues.map((venue) => <VenueCard key={venue.id} venue={venue} />)
+        ) : (
+          <PageSubtitle>No venues found</PageSubtitle>
+        )}
       </VenuesGrid>
     </PageContainer>
   );
@@ -36,44 +90,20 @@ const PageContainer = styled.div`
 
 const PageHeader = styled.div`
   margin-bottom: 2rem;
-
-  @media (max-width: 768px) {
-    margin-bottom: 1.5rem;
-  }
 `;
 
 const PageTitle = styled.h1`
   color: #0a0a0a;
   font-family: Poppins;
   font-size: 30px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 30px;
   margin-bottom: 0.5rem;
-
-  @media (max-width: 768px) {
-    font-size: 24px;
-    line-height: 28px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 20px;
-    line-height: 24px;
-  }
 `;
 
 const PageSubtitle = styled.p`
   color: #717182;
   font-family: Poppins;
   font-size: 16px;
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 13px;
-  }
 `;
 
 const VenuesGrid = styled.div`

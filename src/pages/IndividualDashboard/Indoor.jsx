@@ -1,25 +1,73 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { venuesData } from "../../data/venuesData";
+import axios from "axios";
 import VenueCard from "../../components/VenueCard";
 
 const Indoor = () => {
-  const selectedVenues = venuesData.filter(
-    (venue) =>
-      venue.name === "Versatile Events Center" ||
-      venue.name === "Grand Elegance Banquet Hall" ||
-      venue.name === "Crystal Ballroom"
-  );
+  const [venues, setVenues] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchIndoorVenues = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        // Fetch all venues from backend
+        const response = await axios.get(
+          "https://eventiq-final-project.onrender.com/venues"
+        );
+
+        // Filter venues that are Indoor type (you can adjust this based on actual API data)
+        const indoorVenues = response.data.filter(
+          (venue) =>
+            venue.category?.toLowerCase() === "indoor" ||
+            venue.type?.toLowerCase() === "indoor"
+        );
+
+        setVenues(indoorVenues);
+      } catch (err) {
+        console.error("❌ Error fetching indoor venues:", err);
+        setError("Failed to load indoor venues. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchIndoorVenues();
+  }, []);
+
+  if (loading) {
+    return (
+      <PageHolder>
+        <PageTitle>Loading Indoor Venues...</PageTitle>
+      </PageHolder>
+    );
+  }
+
+  if (error) {
+    return (
+      <PageHolder>
+        <PageTitle>Error</PageTitle>
+        <PageSubtitle>{error}</PageSubtitle>
+      </PageHolder>
+    );
+  }
+
   return (
     <PageHolder>
       <PageHeader>
         <PageTitle>Event Indoor Halls in Lagos</PageTitle>
-        <PageSubtitle>{selectedVenues.length} venues available</PageSubtitle>
+        <PageSubtitle>{venues.length} venues available</PageSubtitle>
       </PageHeader>
+
       <IndoorGrid>
-        {selectedVenues.map((venue) => (
-          <VenueCard key={venue.id} venue={venue} />
-        ))}
+        {venues.length > 0 ? (
+          venues.map((venue) => <VenueCard key={venue.id} venue={venue} />)
+        ) : (
+          <PageSubtitle>No indoor venues found</PageSubtitle>
+        )}
       </IndoorGrid>
     </PageHolder>
   );
@@ -43,44 +91,20 @@ const PageHolder = styled.div`
 
 const PageHeader = styled.div`
   margin-bottom: 2rem;
-
-  @media (max-width: 768px) {
-    margin-bottom: 1.5rem;
-  }
 `;
 
 const PageTitle = styled.h1`
   color: #0a0a0a;
   font-family: "Poppins";
   font-size: 30px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 30px;
   margin-bottom: 0.5rem;
-
-  @media (max-width: 768px) {
-    font-size: 24px;
-    line-height: 28px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 20px;
-    line-height: 24px;
-  }
 `;
 
 const PageSubtitle = styled.p`
   color: #717182;
   font-family: "Poppins";
   font-size: 1.2rem;
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 0.9rem;
-  }
 `;
 
 const IndoorGrid = styled.div`

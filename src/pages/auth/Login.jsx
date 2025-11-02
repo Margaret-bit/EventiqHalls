@@ -63,15 +63,30 @@ const Login = () => {
       );
 
       // Backend should return a token or user info
-      if (response.data && response.data.token) {
-        toast.success("Login successful 🎉");
-
+      // if (response.data && response.data.token) {
+      //   toast.success("Login successful 🎉");
+if (response.data && response.data.token && response.data.data) {
+  toast.success("Login successful 🎉");
        
-        localStorage.setItem("authToken", response.data.token);
-        localStorage.setItem("user", JSON.stringify(response.data.user));
-
+    const user = response.data.data;
+  const userRole = user.role;
+        // localStorage.setItem("authToken", response.data.token);
+        // localStorage.setItem("user", JSON.stringify(response.data.user));
+ localStorage.setItem("authToken", response.data.token);
+  localStorage.setItem("user", JSON.stringify(user));
+  localStorage.setItem("userRole", userRole);
        
-        setTimeout(() => navigate("/dashboardHome"), 2000);
+        // setTimeout(() => navigate("/dashboardHome"), 2000);
+         setTimeout(() => {
+    if (userRole === "venue-owner") {
+      navigate("/dashboardHome");
+    } else if (userRole === "client") {
+      navigate("/individual-dashboard");
+    } else {
+      // fallback (if role missing or new role added)
+      navigate("/individual-dashboard");
+    }
+  }, 1500);
       } else {
         toast.error("Invalid response from server");
       }

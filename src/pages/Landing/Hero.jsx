@@ -198,6 +198,7 @@ const Video = styled.video`
   height: 100%;
   z-index: 0;
   object-fit: cover;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.531), #000);
 
   @media (max-width: 768px) {
     object-position: center;

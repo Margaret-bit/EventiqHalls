@@ -72,7 +72,6 @@ const SignupIndividual = () => {
     return true;
   };
 
-  // Handle submit with Axios
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -87,7 +86,7 @@ const SignupIndividual = () => {
 
       console.log("Signup successful:", response.data);
       toast.success("Account created successfully! 🎉");
-      setTimeout(() => navigate("/dashboardHome"), 2000); // slight delay to show toast
+      setTimeout(() => navigate("/dashboardHome"), 2000);
     } catch (error) {
       console.error("Signup failed:", error);
       if (error.response) {

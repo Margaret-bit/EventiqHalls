@@ -1,3 +1,17 @@
+import { GiInfestedMass } from "react-icons/gi";
+import img1 from "../assets/event1.png";
+import img2 from "../assets/event2.png";
+import img3 from "../assets/event3.png";
+import img4 from "../assets/event4.png";
+import img5 from "../assets/event5.png";
+import img6 from "../assets/event6.png";
+import img7 from "../assets/event7.png";
+
+import maryslessor2 from "../assets/maryslessor2.png";
+import maryslessor3 from "../assets/maryslessor3.png";
+import maryslessor4 from "../assets/maryslessor4.png";
+import maryslessor5 from "../assets/maryslessor5.png";
+import { SiMinutemailer } from "react-icons/si";
 // import img1 from "../assets/event1.png";
 // import img2 from "../assets/event2.png";
 // import img3 from "../assets/event3.png";
@@ -243,3 +257,6 @@ export const venuesData = [
       "Free cancellation up to 30 days before the event. 50% refund for cancellations made 15-30 days before. No refund for cancellations within 15 days of the event date.",
   },
 ];
+
+
+

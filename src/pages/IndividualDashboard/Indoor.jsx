@@ -14,12 +14,12 @@ const Indoor = () => {
         setLoading(true);
         setError(null);
 
-        // Fetch all venues from backend
+        
         const response = await axios.get(
           "https://eventiq-final-project.onrender.com/venues"
         );
 
-        // Filter venues that are Indoor type (you can adjust this based on actual API data)
+        
         const indoorVenues = response.data.filter(
           (venue) =>
             venue.category?.toLowerCase() === "indoor" ||
@@ -28,7 +28,7 @@ const Indoor = () => {
 
         setVenues(indoorVenues);
       } catch (err) {
-        console.error("❌ Error fetching indoor venues:", err);
+        console.error(" Error fetching indoor venues:", err);
         setError("Failed to load indoor venues. Please try again later.");
       } finally {
         setLoading(false);

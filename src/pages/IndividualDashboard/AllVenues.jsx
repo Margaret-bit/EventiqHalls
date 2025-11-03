@@ -9,32 +9,32 @@ const All_venues = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch venues when the component mounts
+    
     const fetchVenues = async () => {
       try {
-        setLoading(true); // start loading
-        setError(null); // clear any previous error
+        setLoading(true); 
+        setError(null); 
 
         const response = await axios.get(
           "https://eventiq-final-project.onrender.com/venues"
         );
 
-        // Assuming the API returns an array of venues
+        
         setVenues(response.data);
       } catch (err) {
-        console.error("❌ Error fetching venues:", err);
+        console.error(" Error fetching venues:", err);
         setError(
           "Failed to load venues. Please check your network or try again later."
         );
       } finally {
-        setLoading(false); // stop loading in all cases
+        setLoading(false); 
       }
     };
 
     fetchVenues();
   }, []);
 
-  // 🌀 Loading state
+  
   if (loading) {
     return (
       <PageContainer>
@@ -43,7 +43,7 @@ const All_venues = () => {
     );
   }
 
-  // ⚠ Error state
+ 
   if (error) {
     return (
       <PageContainer>
@@ -53,7 +53,7 @@ const All_venues = () => {
     );
   }
 
-  // ✅ Success state
+  
   return (
     <PageContainer>
       <PageHeader>

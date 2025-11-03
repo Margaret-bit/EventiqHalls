@@ -14,12 +14,12 @@ const Multipurpose = () => {
         setLoading(true);
         setError(null);
 
-        // Fetch all venues from your API
+        
         const response = await axios.get(
           "https://eventiq-final-project.onrender.com/venues"
         );
 
-        // Filter multipurpose halls (adjust key name if your API uses something else)
+        
         const multipurposeVenues = response.data.filter(
           (venue) =>
             venue.category?.toLowerCase() === "multipurpose" ||
@@ -28,7 +28,7 @@ const Multipurpose = () => {
 
         setVenues(multipurposeVenues);
       } catch (err) {
-        console.error("❌ Error fetching multipurpose venues:", err);
+        console.error(" Error fetching multipurpose venues:", err);
         setError("Failed to load multipurpose venues. Please try again later.");
       } finally {
         setLoading(false);

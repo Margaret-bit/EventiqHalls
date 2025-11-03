@@ -12,6 +12,18 @@ import maryslessor3 from "../assets/maryslessor3.png";
 import maryslessor4 from "../assets/maryslessor4.png";
 import maryslessor5 from "../assets/maryslessor5.png";
 import { SiMinutemailer } from "react-icons/si";
+// import img1 from "../assets/event1.png";
+// import img2 from "../assets/event2.png";
+// import img3 from "../assets/event3.png";
+// import img4 from "../assets/event4.png";
+// import img5 from "../assets/event5.png";
+// import img6 from "../assets/event6.png";
+// import img7 from "../assets/event7.png";
+
+// import maryslessor2 from "../assets/maryslessor2.png";
+// import maryslessor3 from "../assets/maryslessor3.png";
+// import maryslessor4 from "../assets/maryslessor4.png";
+// import maryslessor5 from "../assets/maryslessor5.png";
 
 export const venuesData = [
   {
@@ -19,7 +31,7 @@ export const venuesData = [
     name: "Versatile Events Center",
     location: "Ikeja GRA, Lagos",
     category: "multipurpose",
-    image: img1,
+    // image: img1,
     rating: 4.8,
     reviews: 105,
     price: "₦420,000",
@@ -43,7 +55,7 @@ export const venuesData = [
       "Security",
       "Accessible design",
     ],
-    images: [maryslessor2, maryslessor3, maryslessor4, maryslessor5],
+    // images: [maryslessor2, maryslessor3, maryslessor4, maryslessor5],
     cancellationPolicy:
       "Free cancellation up to 30 days before the event. 50% refund for cancellations made 15-30 days before. No refund for cancellations within 15 days of the event date.",
   },
@@ -52,7 +64,7 @@ export const venuesData = [
     name: "Imperial Marquee Hall",
     location: "Ajah, Lagos",
     category: "indoor",
-    image: img2,
+    // image: img2,
     rating: 4.8,
     reviews: 89,
     price: "₦480,000",
@@ -74,7 +86,7 @@ export const venuesData = [
       "Power backup",
       "High-speed internet",
     ],
-    images: [maryslessor2, maryslessor3, maryslessor4, maryslessor5],
+    // images: [maryslessor2, maryslessor3, maryslessor4, maryslessor5],
     cancellationPolicy:
       "Free cancellation up to 30 days before the event. 50% refund for cancellations made 15-30 days before.",
   },
@@ -83,7 +95,7 @@ export const venuesData = [
     name: "Skyline Rooftop Venue",
     location: "Ikoyi, Lagos",
     category: "outdoor",
-    image: img3,
+    // image: img3,
     rating: 4.8,
     reviews: 76,
     price: "₦600,000",
@@ -105,7 +117,7 @@ export const venuesData = [
       "Security",
       "Accessible design",
     ],
-    images: [maryslessor2, maryslessor3, maryslessor4, maryslessor5],
+    // images: [maryslessor2, maryslessor3, maryslessor4, maryslessor5],
     cancellationPolicy: "Free cancellation up to 30 days before the event.",
   },
   {
@@ -113,7 +125,7 @@ export const venuesData = [
     name: "Lush Garden Paradise",
     location: "Lekki Phase 1, Lagos",
     category: "outdoor",
-    image: img4,
+    // image: img4,
     rating: 4.7,
     reviews: 92,
     price: "₦550,000",
@@ -135,7 +147,7 @@ export const venuesData = [
       "Security",
       "Accessible design",
     ],
-    images: [maryslessor2, maryslessor3, maryslessor4, maryslessor5],
+    // images: [maryslessor2, maryslessor3, maryslessor4, maryslessor5],
     cancellationPolicy:
       "Free cancellation up to 30 days before the event. 50% refund for cancellations made 15-30 days before.",
   },
@@ -144,7 +156,7 @@ export const venuesData = [
     name: "Grand Elegance Banquet Hall",
     location: "Lekki Phase 1, Lagos",
     category: "indoor",
-    image: img5,
+    // image: img5,
     rating: 4.8,
     reviews: 156,
     price: "₦800,000",
@@ -170,7 +182,7 @@ export const venuesData = [
       "Security",
       "Accessible design",
     ],
-    images: [maryslessor2, maryslessor3, maryslessor4, maryslessor5],
+    // images: [maryslessor2, maryslessor3, maryslessor4, maryslessor5],
     cancellationPolicy:
       "Free cancellation up to 30 days before the event. 50% refund for cancellations made 15-30 days before. No refund for cancellations within 15 days.",
   },
@@ -179,7 +191,7 @@ export const venuesData = [
     name: "Crystal Ballroom",
     location: "Victoria Island, Lagos",
     category: "multipurpose",
-    image: img6,
+    // image: img6,
     rating: 5.0,
     reviews: 203,
     price: "₦750,000",
@@ -205,7 +217,7 @@ export const venuesData = [
       "Security",
       "Accessible design",
     ],
-    images: [maryslessor2, maryslessor3, maryslessor4, maryslessor5],
+    // images: [maryslessor2, maryslessor3, maryslessor4, maryslessor5],
     cancellationPolicy:
       "Free cancellation up to 30 days before the event. 50% refund for cancellations made 15-30 days before.",
   },
@@ -214,7 +226,7 @@ export const venuesData = [
     name: "Mary Slessor",
     location: "Victoria Island, Lagos",
     category: "multipurpose",
-    image: img7,
+    // image: img7,
     rating: 5.0,
     reviews: 189,
     price: "₦800,000",
@@ -240,7 +252,7 @@ export const venuesData = [
       "Security",
       "Accessible design",
     ],
-    images: [img7, maryslessor2, maryslessor3, maryslessor4, maryslessor5],
+    // images: [img7, maryslessor2, maryslessor3, maryslessor4, maryslessor5],
     cancellationPolicy:
       "Free cancellation up to 30 days before the event. 50% refund for cancellations made 15-30 days before. No refund for cancellations within 15 days of the event date.",
   },

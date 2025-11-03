@@ -1,4 +1,4 @@
-
+import { CheckCircle2 } from "lucide-react";
 import styled from "styled-components";
 // import event from "../../assets/event.jpg";
 
@@ -31,7 +31,7 @@ const Event_section = () => {
       </Event_text>
 
       <Event_image>
-        <img src={event} alt="Event hall" />
+        <img src="" alt="Event hall" />
       </Event_image>
     </Section>
   );

@@ -16,7 +16,7 @@ const All_venues = () => {
         setError(null); 
 
         const response = await axios.get(
-          "https://eventiq-final-project.onrender.com/venues"
+          "https://eventiq-final-project.onrender.com/api/v1/venues"
         );
 
         

@@ -1,6 +1,6 @@
 import { CheckCircle2 } from "lucide-react";
 import styled from "styled-components";
-import event from "../../assets/event.jpg";
+// import event from "../../assets/event.jpg";
 
 const Event_section = () => {
   return (

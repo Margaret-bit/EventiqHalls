@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
 import {
   BsBuilding,
   BsCalendar2Check,
@@ -20,33 +21,113 @@ import {
 import { TbCurrencyNaira } from "react-icons/tb";
 import { IoTrendingUpOutline, IoAddCircleOutline } from "react-icons/io5";
 import { HiOutlineUserCircle } from "react-icons/hi";
+import { toast } from "react-toastify";
 
 const DashboardHome = () => {
+  const [dashboardData, setDashboardData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [firstName, setFirstName] = useState("User");
+  const [currentDate, setCurrentDate] = useState("");
+
+  useEffect(() => {
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      try {
+        const user = JSON.parse(userData);
+        setFirstName(user.firstName || "User");
+      } catch (err) {
+        console.error("Error parsing user data:", err);
+        setFirstName("User");
+      }
+    }
+
+    const today = new Date();
+    const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+    setCurrentDate(today.toLocaleDateString("en-US", options));
+  }, []);
+
+  useEffect(() => {
+    const fetchDashboardData = async () => {
+      try {
+        setLoading(true);
+        const token = localStorage.getItem("authToken");
+        
+        const response = await axios.get(
+          "https://eventiq-final-project.onrender.com/api/v1/dashboard",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        // <CHANGE> Added debug logging to see actual response structure
+        console.log("[v0] Dashboard API response:", response.data);
+
+        if (response.data && response.data.data) {
+          setDashboardData(response.data.data);
+          setError(null);
+        } else {
+          setError("Invalid response format");
+          toast.error("Failed to load dashboard data");
+        }
+      } catch (err) {
+        console.error("Dashboard fetch error:", err);
+        setError(err.message);
+        if (err.response?.status === 401) {
+          toast.error("Unauthorized. Please login again.");
+        } else if (err.response?.data?.message) {
+          toast.error(err.response.data.message);
+        } else {
+          toast.error("Failed to load dashboard data");
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDashboardData();
+  }, []);
+
+  // <CHANGE> Helper function to safely extract numeric values from API response
+  const getValue = (value) => {
+    if (value === null || value === undefined) return "0";
+    if (typeof value === "object" && value.total !== undefined) {
+      return value.total;
+    }
+    return value;
+  };
+
   const statsData = [
     {
       title: "Total Venues",
-      value: "0",
+      value: loading ? <SkeletonLoader /> : getValue(dashboardData?.totalVenues) || "0",
       icon: <BsBuilding />,
       iconBg: "#e9d5ff",
       iconColor: "purple",
     },
     {
       title: "Active Bookings",
-      value: "0",
+      value: loading ? <SkeletonLoader /> : getValue(dashboardData?.totalBookings) || "0",
       icon: <FiCalendar />,
       iconBg: "#fef3c7",
       iconColor: "#f59e0b",
     },
     {
       title: "Revenue(This Month)",
-      value: "#0",
+      value: loading ? (
+        <SkeletonLoader />
+      ) : (
+        `₦${(getValue(dashboardData?.totalRevenue) || 0).toLocaleString()}`
+      ),
       icon: <TbCurrencyNaira />,
       iconBg: "#bbf7d0",
       iconColor: "#22c55e",
     },
     {
-      title: "Occupancy Rate",
-      value: "0%",
+      title: "Growth Rate",
+      value: loading ? <SkeletonLoader /> : getValue(dashboardData?.growthRate) || "0%",
       icon: <IoTrendingUpOutline />,
       iconBg: "#e0e7ff",
       iconColor: "#6366f1",
@@ -57,13 +138,13 @@ const DashboardHome = () => {
     <Container>
       <Wrapper>
         <WelcomeSection>
-          <WelcomeText>Welcome, Success</WelcomeText>
-          <DateText>Friday, October 29, 2025</DateText>
+          <WelcomeText>Welcome, {firstName}</WelcomeText>
+          <DateText>{currentDate}</DateText>
         </WelcomeSection>
 
         <StatsGrid>
           {statsData.map((stat, index) => (
-            <StatCard key={index}>
+            <StatCard key={index} $isLoading={loading}>
               <StatHeader>
                 <StatTitle>{stat.title}</StatTitle>
                 <StatIcon $bgColor={stat.iconBg} $color={stat.iconColor}>
@@ -75,22 +156,56 @@ const DashboardHome = () => {
           ))}
         </StatsGrid>
 
-        <EmptyState>
-          <EmptyIcon>
-            <BsBox />
-          </EmptyIcon>
-          <EmptyTitle>No Records Yet</EmptyTitle>
-          <EmptyText>
-            Create your first venue to start managing bookings and events
-          </EmptyText>
-        </EmptyState>
+        {!loading && (!dashboardData || error) && (
+          <EmptyState>
+            <EmptyIcon>
+              <BsBox />
+            </EmptyIcon>
+            <EmptyTitle>No Records Yet</EmptyTitle>
+            <EmptyText>
+              Create your first venue to start managing bookings and events
+            </EmptyText>
+          </EmptyState>
+        )}
       </Wrapper>
     </Container>
   );
 };
 
+const SkeletonLoader = () => (
+  <SkeletonBar />
+);
+
+const SkeletonBar = styled.div`
+  height: 32px;
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 6px;
+  width: 60%;
+
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    height: 24px;
+  }
+`;
+
 export default DashboardHome;
 
+// ... existing code ...
 const Container = styled.div`
   width: 100%;
   display: flex;
@@ -179,6 +294,7 @@ const StatCard = styled.div`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   border: 1px solid #f3f4f6;
   transition: all 0.2s ease;
+  opacity: ${(props) => (props.$isLoading ? 0.7 : 1)};
 
   &:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);

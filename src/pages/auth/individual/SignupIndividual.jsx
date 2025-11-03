@@ -10,13 +10,12 @@ import {
 } from "lucide-react";
 import "./SignupIndividual.css";
 import { useNavigate } from "react-router-dom";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { LuUser } from "react-icons/lu";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import VerificationModal from "../../../components/static/VerificationModal/VerificationModal";
-
 
 const SignupIndividual = () => {
   const [isVerificationOpen, setIsVerificationOpen] = useState(false);
@@ -76,73 +75,45 @@ const SignupIndividual = () => {
     return true;
   };
 
-//   // Handle submit with Axios
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     if (!validateForm()) return;
-
-//     setLoading(true);
-
-// try {
-//   const response = await axios.post(
-//     "https://eventiq-final-project.onrender.com/api/v1/register-client",
-//     formData
-//   );
-
-//   console.log("Signup successful:", response.data);
-//   toast.success("Account created successfully! 🎉");
-//   setTimeout(() => navigate("/dashboardHome"), 2000); // slight delay to show toast
-// } catch (error) {
-//   console.error("Signup failed:", error);
-//   if (error.response) {
-//     toast.error(error.response.data.message || "Signup failed. Please try again.");
-//   } else {
-//     toast.error("Network error. Please check your internet connection.");
-//   }
-// } finally {
-//     setLoading(false);
-//   }
-
-//   };
-
-// Handle submit with Axios
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setLoading(true);
 
-try {
-  const response = await axios.post(
-    "https://eventiq-final-project.onrender.com/api/v1/register-client",
-    formData
-  );
+    try {
+      const response = await axios.post(
+        "https://eventiq-final-project.onrender.com/api/v1/register-client",
+        formData
+      );
 
-  console.log("Signup successful:", response.data);
-  localStorage.setItem("signupEmail", response.data.email);
-    localStorage.setItem("userRole", response.data.role);
- 
-  // setTimeout(() => navigate("/dashboardHome"), 2000); 
-  setIsVerificationOpen(true);
-} catch (error) {
-  console.error("Signup failed:", error);
-  if (error.response) {
-    toast.error(error.response.data.message || "Signup failed. Please try again.");
-  } else {
-    toast.error("Network error. Please check your internet connection.");
-  }
-} finally {
-    setLoading(false);
-  }
+      console.log("Signup successful:", response.data);
+      localStorage.setItem("signupEmail", response.data.email);
+      localStorage.setItem("userRole", response.data.role);
 
-     
-
+      setIsVerificationOpen(true);
+    } catch (error) {
+      console.error("Signup failed:", error);
+      if (error.response) {
+        toast.error(
+          error.response.data.message || "Signup failed. Please try again."
+        );
+      } else {
+        toast.error("Network error. Please check your internet connection.");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="signup-container-ind">
-             <ToastContainer position="top-right" autoClose={3000} />
-             {isVerificationOpen && (
-        <VerificationModal onClose={() => setIsVerificationOpen(false)} email={formData.email} />
+      <ToastContainer position="top-right" autoClose={3000} />
+      {isVerificationOpen && (
+        <VerificationModal
+          onClose={() => setIsVerificationOpen(false)}
+          email={formData.email}
+        />
       )}
       <div className="left-section2">
         <div
@@ -174,17 +145,6 @@ try {
 
       <div className="right-section2">
         <div className="form-wrapper2">
-          <button
-            className="mobile-back-btn"
-            onClick={() => navigate("/", { replace: true })}
-          >
-            <ArrowLeft size={18} />
-            <span>Back</span>
-          </button>
-
-          {/* Mobile-only badge */}
-          <div className="mobile-badge">FOR CLIENTS</div>
-
           <div className="form-header2">
             <LuUser className="user-icon2" size={30} />
             <div className="form-header-text2">
@@ -296,9 +256,9 @@ try {
             {/* <p className="login-text-ind">
               Already have an account? <a href="/login">Log in</a>
             </p> */}
-                        <p className="login-text-client">
-  Already have an account? <Link to="/login">Log in</Link>
-</p>
+            <p className="login-text-client">
+              Already have an account? <Link to="/login">Log in</Link>
+            </p>
           </form>
 
           <div className="security-note-ind">
@@ -308,8 +268,8 @@ try {
         </div>
       </div>
     </div>
-    
   );
 };
- }
+
 export default SignupIndividual;
+// osi
